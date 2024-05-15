@@ -56,21 +56,24 @@ const config = {
 	},
 	etherscan: {
 		apiKey: {
-			'zeta-mainnet-pro': process.env.APIKEY_MAINNET!,
-			mainnet: process.env.APIKEY_MAINNET!,
-			bsc: process.env.APIKEY_BSC!,
-			polygon: process.env.APIKEY_POLYGON!,
-			goerli: process.env.APIKEY_GOERLI!,
-			bscTestnet: process.env.APIKEY_CHAPEL!,
-			polygonMumbai: process.env.APIKEY_MUMBAI!
+			'optopia-sepolia': 'YCD2MN31FUJ15DQD4ANRH5FVQV2V66VQ3K',
+			'optopia': 'YCD2MN31FUJ15DQD4ANRH5FVQV2V66VQ3K'
 		},
 		customChains: [
 			{
-				network: 'zeta-mainnet-pro',
-				chainId: 7000,
+				network: 'optopia-sepolia',
+				chainId: 62049,
 				urls: {
-					apiURL: 'https://zetachain.blockscout.com/api',
-					browserURL: 'https://zetachain.blockscout.com/'
+					apiURL: 'https://scan-testnet.optopia.ai/api',
+					browserURL: 'https://scan-testnet.optopia.ai/'
+				}
+			},
+			{
+				network: 'optopia',
+				chainId: 62050,
+				urls: {
+					apiURL: 'https://scan.optopia.ai/api',
+					browserURL: 'https://scan.optopia.ai/'
 				}
 			}
 		]
