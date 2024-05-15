@@ -33,7 +33,7 @@ contract VigorStoneStake is ERC1155Holder {
 	}
 
 	function stake(uint256 amount) external {
-		require(getStake(msg.sender) + amount <= MAXSTAKE, "VigorStoneStake: Stake exceeds max stake");
+		require(getStake(msg.sender) + amount <= MAXSTAKE, "stake exceeds max stake");
 		require(amount > 0, "amount must be greater than 0");
 		TOKEN.safeTransferFrom(msg.sender, address(this), TOKENID, amount, "");
 		uint256 oldAmount = getStake(msg.sender);
@@ -44,7 +44,7 @@ contract VigorStoneStake is ERC1155Holder {
 	function applyUnstake(uint256 amount) external {
 		require(amount > 0, "amount must be greater than 0");
 		uint256 oldAmount = getStake(msg.sender);
-		require(amount <= oldAmount, "amount must be less than stakes");
+		require(amount <= oldAmount, "amount must be less than or equal to stakes");
 		uint256 id = applyIds[msg.sender];
 		uint256 newStake = oldAmount - amount;
 		if (newStake == 0) {
@@ -52,7 +52,7 @@ contract VigorStoneStake is ERC1155Holder {
 		} else {
 			stakes.set(msg.sender, newStake);
 		}
-		applies[msg.sender].set(id, EnumerableApply.ApplyInfo(id, block.timestamp));
+		applies[msg.sender].set(id, EnumerableApply.ApplyInfo(amount, block.timestamp));
 		applyIds[msg.sender]++;
 		emit ApplyUnstaked(msg.sender, id, amount, block.timestamp);
 	}
@@ -67,6 +67,9 @@ contract VigorStoneStake is ERC1155Holder {
 	}
 
 	function getStake(address account) public view returns (uint256) {
+		if (!stakes.contains(account)) {
+			return 0;
+		}
 		return stakes.get(account);
 	}
 
@@ -76,14 +79,16 @@ contract VigorStoneStake is ERC1155Holder {
 
 	function stakesOf(uint256 start, uint256 amount) public view returns (address[] memory stakers, uint256[] memory amounts) {
 		uint256 size = stakeLength();
-		require(start < size, "invalid start");
-		if (start + amount > size) {
-			amount = size - start;
-		}
-		stakers = new address[](amount);
-		amounts = new uint256[](amount);
-		for (uint256 i = 0; i < amount; i++) {
-			(stakers[i], amounts[i]) = stakes.at(start + i);
+		if (size != 0) {
+			require(start < size, "invalid start");
+			if (start + amount > size) {
+				amount = size - start;
+			}
+			stakers = new address[](amount);
+			amounts = new uint256[](amount);
+			for (uint256 i = 0; i < amount; i++) {
+				(stakers[i], amounts[i]) = stakes.at(start + i);
+			}
 		}
 	}
 

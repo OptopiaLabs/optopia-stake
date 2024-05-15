@@ -50,7 +50,7 @@ contract Stake {
 		} else {
 			stakes.set(msg.sender, newStake);
 		}
-		applies[msg.sender].set(id, EnumerableApply.ApplyInfo(id, block.timestamp));
+		applies[msg.sender].set(id, EnumerableApply.ApplyInfo(amount, block.timestamp));
 		applyIds[msg.sender]++;
 		emit ApplyUnstaked(msg.sender, id, amount, block.timestamp);
 	}
@@ -65,19 +65,24 @@ contract Stake {
 	}
 
 	function getStake(address account) public view returns (uint256) {
+		if (!stakes.contains(account)) {
+			return 0;
+		}
 		return stakes.get(account);
 	}
 
 	function stakesOf(uint256 start, uint256 amount) public view returns (address[] memory stakers, uint256[] memory amounts) {
 		uint256 size = stakeLength();
-		require(start < size, "invalid start");
-		if (start + amount > size) {
-			amount = size - start;
-		}
-		stakers = new address[](amount);
-		amounts = new uint256[](amount);
-		for (uint256 i = 0; i < amount; i++) {
-			(stakers[i], amounts[i]) = stakes.at(start + i);
+		if (size != 0) {
+			require(start < size, "invalid start");
+			if (start + amount > size) {
+				amount = size - start;
+			}
+			stakers = new address[](amount);
+			amounts = new uint256[](amount);
+			for (uint256 i = 0; i < amount; i++) {
+				(stakers[i], amounts[i]) = stakes.at(start + i);
+			}
 		}
 	}
 
