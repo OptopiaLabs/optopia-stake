@@ -12,7 +12,7 @@ contract Stake {
 	using EnumerableMap for EnumerableMap.AddressToUintMap;
 	using EnumerableApply for EnumerableApply.UintToApply;
 
-	uint64 public immutable LOCKTIME = 5 minutes;
+	uint64 public immutable LOCKTIME = 7 days;
 	IERC20 public immutable TOKEN;
 
 	EnumerableMap.AddressToUintMap internal stakes;
