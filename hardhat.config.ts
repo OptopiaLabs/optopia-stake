@@ -43,10 +43,6 @@ const config = {
 			gasPrice: 'auto',
 			gasMultiplier: 1.3,
 			chainId: 1337,
-			mining: {
-				auto: true,
-				interval: 5000
-			}
 		},
 		'optopia-sepolia': {
 			url: 'https://rpc-testnet.optopia.ai/',

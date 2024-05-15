@@ -1,0 +1,652 @@
+{
+  "address": "0x771B90bE329F3d911651e93bCB97FB7D7C87a3Cc",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "contract IERC20",
+          "name": "token",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "target",
+          "type": "address"
+        }
+      ],
+      "name": "AddressEmptyCode",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "AddressInsufficientBalance",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "key",
+          "type": "bytes32"
+        }
+      ],
+      "name": "EnumerableMapNonexistentKey",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "key",
+          "type": "uint256"
+        }
+      ],
+      "name": "EnumerableMapNonexistentKey",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "FailedInnerCall",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        }
+      ],
+      "name": "SafeERC20FailedOperation",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "applyId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "applyTime",
+          "type": "uint256"
+        }
+      ],
+      "name": "ApplyUnstaked",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "Staked",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "applyId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "Unstaked",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "LOCKTIME",
+      "outputs": [
+        {
+          "internalType": "uint64",
+          "name": "",
+          "type": "uint64"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "TOKEN",
+      "outputs": [
+        {
+          "internalType": "contract IERC20",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "applyLength",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "start",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "applyOf",
+      "outputs": [
+        {
+          "internalType": "uint256[]",
+          "name": "ids",
+          "type": "uint256[]"
+        },
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "applyTime",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct EnumerableApply.ApplyInfo[]",
+          "name": "infos",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "applyUnstake",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "applyId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getApply",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "applyTime",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct EnumerableApply.ApplyInfo",
+          "name": "info",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "getStake",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "stake",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "stakeLength",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "start",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "stakesOf",
+      "outputs": [
+        {
+          "internalType": "address[]",
+          "name": "stakers",
+          "type": "address[]"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "amounts",
+          "type": "uint256[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "applyId",
+          "type": "uint256"
+        }
+      ],
+      "name": "unstake",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x3cd2ea57a8ddda5b75f9915fa035da59fe08163f2295ddc9a950ecf8800e8551",
+  "receipt": {
+    "to": null,
+    "from": "0xF1658C608708172655A8e70a1624c29F956Ee63D",
+    "contractAddress": "0x771B90bE329F3d911651e93bCB97FB7D7C87a3Cc",
+    "transactionIndex": 1,
+    "gasUsed": "1934003",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0xdcdbe4facee19d7e9e235a3589a8a0512dc00b08a31d4ced128081c9513186b9",
+    "transactionHash": "0x3cd2ea57a8ddda5b75f9915fa035da59fe08163f2295ddc9a950ecf8800e8551",
+    "logs": [],
+    "blockNumber": 1864951,
+    "cumulativeGasUsed": "1977866",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "0xF4C3a4d9568672FB4A8174EfD29dDAB6255E8729"
+  ],
+  "numDeployments": 1,
+  "solcInputHash": "2fb8f2ffd2e3fd56577c5bb57438a114",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.20+commit.a1b79de6\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"contract IERC20\",\"name\":\"token\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"target\",\"type\":\"address\"}],\"name\":\"AddressEmptyCode\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"AddressInsufficientBalance\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"key\",\"type\":\"bytes32\"}],\"name\":\"EnumerableMapNonexistentKey\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"key\",\"type\":\"uint256\"}],\"name\":\"EnumerableMapNonexistentKey\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"FailedInnerCall\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"}],\"name\":\"SafeERC20FailedOperation\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"applyId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"applyTime\",\"type\":\"uint256\"}],\"name\":\"ApplyUnstaked\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"Staked\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"applyId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"Unstaked\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"LOCKTIME\",\"outputs\":[{\"internalType\":\"uint64\",\"name\":\"\",\"type\":\"uint64\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"TOKEN\",\"outputs\":[{\"internalType\":\"contract IERC20\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"applyLength\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"start\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"applyOf\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"ids\",\"type\":\"uint256[]\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"applyTime\",\"type\":\"uint256\"}],\"internalType\":\"struct EnumerableApply.ApplyInfo[]\",\"name\":\"infos\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"applyUnstake\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"applyId\",\"type\":\"uint256\"}],\"name\":\"getApply\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"applyTime\",\"type\":\"uint256\"}],\"internalType\":\"struct EnumerableApply.ApplyInfo\",\"name\":\"info\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"getStake\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"stake\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"stakeLength\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"start\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"stakesOf\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"stakers\",\"type\":\"address[]\"},{\"internalType\":\"uint256[]\",\"name\":\"amounts\",\"type\":\"uint256[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"applyId\",\"type\":\"uint256\"}],\"name\":\"unstake\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"errors\":{\"AddressEmptyCode(address)\":[{\"details\":\"There's no code at `target` (it is not a contract).\"}],\"AddressInsufficientBalance(address)\":[{\"details\":\"The ETH balance of the account is not enough to perform the operation.\"}],\"EnumerableMapNonexistentKey(bytes32)\":[{\"details\":\"Query for a nonexistent map key.\"}],\"FailedInnerCall()\":[{\"details\":\"A call to an address target failed. The target may have reverted.\"}],\"SafeERC20FailedOperation(address)\":[{\"details\":\"An operation with an ERC20 token failed.\"}]},\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/core/OPAIStake.sol\":\"OPAIStake\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v5.0.0) (token/ERC20/IERC20.sol)\\n\\npragma solidity ^0.8.20;\\n\\n/**\\n * @dev Interface of the ERC20 standard as defined in the EIP.\\n */\\ninterface IERC20 {\\n    /**\\n     * @dev Emitted when `value` tokens are moved from one account (`from`) to\\n     * another (`to`).\\n     *\\n     * Note that `value` may be zero.\\n     */\\n    event Transfer(address indexed from, address indexed to, uint256 value);\\n\\n    /**\\n     * @dev Emitted when the allowance of a `spender` for an `owner` is set by\\n     * a call to {approve}. `value` is the new allowance.\\n     */\\n    event Approval(address indexed owner, address indexed spender, uint256 value);\\n\\n    /**\\n     * @dev Returns the value of tokens in existence.\\n     */\\n    function totalSupply() external view returns (uint256);\\n\\n    /**\\n     * @dev Returns the value of tokens owned by `account`.\\n     */\\n    function balanceOf(address account) external view returns (uint256);\\n\\n    /**\\n     * @dev Moves a `value` amount of tokens from the caller's account to `to`.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * Emits a {Transfer} event.\\n     */\\n    function transfer(address to, uint256 value) external returns (bool);\\n\\n    /**\\n     * @dev Returns the remaining number of tokens that `spender` will be\\n     * allowed to spend on behalf of `owner` through {transferFrom}. This is\\n     * zero by default.\\n     *\\n     * This value changes when {approve} or {transferFrom} are called.\\n     */\\n    function allowance(address owner, address spender) external view returns (uint256);\\n\\n    /**\\n     * @dev Sets a `value` amount of tokens as the allowance of `spender` over the\\n     * caller's tokens.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * IMPORTANT: Beware that changing an allowance with this method brings the risk\\n     * that someone may use both the old and the new allowance by unfortunate\\n     * transaction ordering. One possible solution to mitigate this race\\n     * condition is to first reduce the spender's allowance to 0 and set the\\n     * desired value afterwards:\\n     * https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729\\n     *\\n     * Emits an {Approval} event.\\n     */\\n    function approve(address spender, uint256 value) external returns (bool);\\n\\n    /**\\n     * @dev Moves a `value` amount of tokens from `from` to `to` using the\\n     * allowance mechanism. `value` is then deducted from the caller's\\n     * allowance.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * Emits a {Transfer} event.\\n     */\\n    function transferFrom(address from, address to, uint256 value) external returns (bool);\\n}\\n\",\"keccak256\":\"0xc6a8ff0ea489379b61faa647490411b80102578440ab9d84e9a957cc12164e70\",\"license\":\"MIT\"},\"@openzeppelin/contracts/token/ERC20/extensions/IERC20Permit.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v5.0.0) (token/ERC20/extensions/IERC20Permit.sol)\\n\\npragma solidity ^0.8.20;\\n\\n/**\\n * @dev Interface of the ERC20 Permit extension allowing approvals to be made via signatures, as defined in\\n * https://eips.ethereum.org/EIPS/eip-2612[EIP-2612].\\n *\\n * Adds the {permit} method, which can be used to change an account's ERC20 allowance (see {IERC20-allowance}) by\\n * presenting a message signed by the account. By not relying on {IERC20-approve}, the token holder account doesn't\\n * need to send a transaction, and thus is not required to hold Ether at all.\\n *\\n * ==== Security Considerations\\n *\\n * There are two important considerations concerning the use of `permit`. The first is that a valid permit signature\\n * expresses an allowance, and it should not be assumed to convey additional meaning. In particular, it should not be\\n * considered as an intention to spend the allowance in any specific way. The second is that because permits have\\n * built-in replay protection and can be submitted by anyone, they can be frontrun. A protocol that uses permits should\\n * take this into consideration and allow a `permit` call to fail. Combining these two aspects, a pattern that may be\\n * generally recommended is:\\n *\\n * ```solidity\\n * function doThingWithPermit(..., uint256 value, uint256 deadline, uint8 v, bytes32 r, bytes32 s) public {\\n *     try token.permit(msg.sender, address(this), value, deadline, v, r, s) {} catch {}\\n *     doThing(..., value);\\n * }\\n *\\n * function doThing(..., uint256 value) public {\\n *     token.safeTransferFrom(msg.sender, address(this), value);\\n *     ...\\n * }\\n * ```\\n *\\n * Observe that: 1) `msg.sender` is used as the owner, leaving no ambiguity as to the signer intent, and 2) the use of\\n * `try/catch` allows the permit to fail and makes the code tolerant to frontrunning. (See also\\n * {SafeERC20-safeTransferFrom}).\\n *\\n * Additionally, note that smart contract wallets (such as Argent or Safe) are not able to produce permit signatures, so\\n * contracts should have entry points that don't rely on permit.\\n */\\ninterface IERC20Permit {\\n    /**\\n     * @dev Sets `value` as the allowance of `spender` over ``owner``'s tokens,\\n     * given ``owner``'s signed approval.\\n     *\\n     * IMPORTANT: The same issues {IERC20-approve} has related to transaction\\n     * ordering also apply here.\\n     *\\n     * Emits an {Approval} event.\\n     *\\n     * Requirements:\\n     *\\n     * - `spender` cannot be the zero address.\\n     * - `deadline` must be a timestamp in the future.\\n     * - `v`, `r` and `s` must be a valid `secp256k1` signature from `owner`\\n     * over the EIP712-formatted function arguments.\\n     * - the signature must use ``owner``'s current nonce (see {nonces}).\\n     *\\n     * For more information on the signature format, see the\\n     * https://eips.ethereum.org/EIPS/eip-2612#specification[relevant EIP\\n     * section].\\n     *\\n     * CAUTION: See Security Considerations above.\\n     */\\n    function permit(\\n        address owner,\\n        address spender,\\n        uint256 value,\\n        uint256 deadline,\\n        uint8 v,\\n        bytes32 r,\\n        bytes32 s\\n    ) external;\\n\\n    /**\\n     * @dev Returns the current nonce for `owner`. This value must be\\n     * included whenever a signature is generated for {permit}.\\n     *\\n     * Every successful call to {permit} increases ``owner``'s nonce by one. This\\n     * prevents a signature from being used multiple times.\\n     */\\n    function nonces(address owner) external view returns (uint256);\\n\\n    /**\\n     * @dev Returns the domain separator used in the encoding of the signature for {permit}, as defined by {EIP712}.\\n     */\\n    // solhint-disable-next-line func-name-mixedcase\\n    function DOMAIN_SEPARATOR() external view returns (bytes32);\\n}\\n\",\"keccak256\":\"0x6008dabfe393240d73d7dd7688033f72740d570aa422254d29a7dce8568f3aff\",\"license\":\"MIT\"},\"@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v5.0.0) (token/ERC20/utils/SafeERC20.sol)\\n\\npragma solidity ^0.8.20;\\n\\nimport {IERC20} from \\\"../IERC20.sol\\\";\\nimport {IERC20Permit} from \\\"../extensions/IERC20Permit.sol\\\";\\nimport {Address} from \\\"../../../utils/Address.sol\\\";\\n\\n/**\\n * @title SafeERC20\\n * @dev Wrappers around ERC20 operations that throw on failure (when the token\\n * contract returns false). Tokens that return no value (and instead revert or\\n * throw on failure) are also supported, non-reverting calls are assumed to be\\n * successful.\\n * To use this library you can add a `using SafeERC20 for IERC20;` statement to your contract,\\n * which allows you to call the safe operations as `token.safeTransfer(...)`, etc.\\n */\\nlibrary SafeERC20 {\\n    using Address for address;\\n\\n    /**\\n     * @dev An operation with an ERC20 token failed.\\n     */\\n    error SafeERC20FailedOperation(address token);\\n\\n    /**\\n     * @dev Indicates a failed `decreaseAllowance` request.\\n     */\\n    error SafeERC20FailedDecreaseAllowance(address spender, uint256 currentAllowance, uint256 requestedDecrease);\\n\\n    /**\\n     * @dev Transfer `value` amount of `token` from the calling contract to `to`. If `token` returns no value,\\n     * non-reverting calls are assumed to be successful.\\n     */\\n    function safeTransfer(IERC20 token, address to, uint256 value) internal {\\n        _callOptionalReturn(token, abi.encodeCall(token.transfer, (to, value)));\\n    }\\n\\n    /**\\n     * @dev Transfer `value` amount of `token` from `from` to `to`, spending the approval given by `from` to the\\n     * calling contract. If `token` returns no value, non-reverting calls are assumed to be successful.\\n     */\\n    function safeTransferFrom(IERC20 token, address from, address to, uint256 value) internal {\\n        _callOptionalReturn(token, abi.encodeCall(token.transferFrom, (from, to, value)));\\n    }\\n\\n    /**\\n     * @dev Increase the calling contract's allowance toward `spender` by `value`. If `token` returns no value,\\n     * non-reverting calls are assumed to be successful.\\n     */\\n    function safeIncreaseAllowance(IERC20 token, address spender, uint256 value) internal {\\n        uint256 oldAllowance = token.allowance(address(this), spender);\\n        forceApprove(token, spender, oldAllowance + value);\\n    }\\n\\n    /**\\n     * @dev Decrease the calling contract's allowance toward `spender` by `requestedDecrease`. If `token` returns no\\n     * value, non-reverting calls are assumed to be successful.\\n     */\\n    function safeDecreaseAllowance(IERC20 token, address spender, uint256 requestedDecrease) internal {\\n        unchecked {\\n            uint256 currentAllowance = token.allowance(address(this), spender);\\n            if (currentAllowance < requestedDecrease) {\\n                revert SafeERC20FailedDecreaseAllowance(spender, currentAllowance, requestedDecrease);\\n            }\\n            forceApprove(token, spender, currentAllowance - requestedDecrease);\\n        }\\n    }\\n\\n    /**\\n     * @dev Set the calling contract's allowance toward `spender` to `value`. If `token` returns no value,\\n     * non-reverting calls are assumed to be successful. Meant to be used with tokens that require the approval\\n     * to be set to zero before setting it to a non-zero value, such as USDT.\\n     */\\n    function forceApprove(IERC20 token, address spender, uint256 value) internal {\\n        bytes memory approvalCall = abi.encodeCall(token.approve, (spender, value));\\n\\n        if (!_callOptionalReturnBool(token, approvalCall)) {\\n            _callOptionalReturn(token, abi.encodeCall(token.approve, (spender, 0)));\\n            _callOptionalReturn(token, approvalCall);\\n        }\\n    }\\n\\n    /**\\n     * @dev Imitates a Solidity high-level call (i.e. a regular function call to a contract), relaxing the requirement\\n     * on the return value: the return value is optional (but if data is returned, it must not be false).\\n     * @param token The token targeted by the call.\\n     * @param data The call data (encoded using abi.encode or one of its variants).\\n     */\\n    function _callOptionalReturn(IERC20 token, bytes memory data) private {\\n        // We need to perform a low level call here, to bypass Solidity's return data size checking mechanism, since\\n        // we're implementing it ourselves. We use {Address-functionCall} to perform this call, which verifies that\\n        // the target address contains contract code and also asserts for success in the low-level call.\\n\\n        bytes memory returndata = address(token).functionCall(data);\\n        if (returndata.length != 0 && !abi.decode(returndata, (bool))) {\\n            revert SafeERC20FailedOperation(address(token));\\n        }\\n    }\\n\\n    /**\\n     * @dev Imitates a Solidity high-level call (i.e. a regular function call to a contract), relaxing the requirement\\n     * on the return value: the return value is optional (but if data is returned, it must not be false).\\n     * @param token The token targeted by the call.\\n     * @param data The call data (encoded using abi.encode or one of its variants).\\n     *\\n     * This is a variant of {_callOptionalReturn} that silents catches all reverts and returns a bool instead.\\n     */\\n    function _callOptionalReturnBool(IERC20 token, bytes memory data) private returns (bool) {\\n        // We need to perform a low level call here, to bypass Solidity's return data size checking mechanism, since\\n        // we're implementing it ourselves. We cannot use {Address-functionCall} here since this should return false\\n        // and not revert is the subcall reverts.\\n\\n        (bool success, bytes memory returndata) = address(token).call(data);\\n        return success && (returndata.length == 0 || abi.decode(returndata, (bool))) && address(token).code.length > 0;\\n    }\\n}\\n\",\"keccak256\":\"0x37bb49513c49c87c4642a891b13b63571bc87013dde806617aa1efb54605f386\",\"license\":\"MIT\"},\"@openzeppelin/contracts/utils/Address.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v5.0.0) (utils/Address.sol)\\n\\npragma solidity ^0.8.20;\\n\\n/**\\n * @dev Collection of functions related to the address type\\n */\\nlibrary Address {\\n    /**\\n     * @dev The ETH balance of the account is not enough to perform the operation.\\n     */\\n    error AddressInsufficientBalance(address account);\\n\\n    /**\\n     * @dev There's no code at `target` (it is not a contract).\\n     */\\n    error AddressEmptyCode(address target);\\n\\n    /**\\n     * @dev A call to an address target failed. The target may have reverted.\\n     */\\n    error FailedInnerCall();\\n\\n    /**\\n     * @dev Replacement for Solidity's `transfer`: sends `amount` wei to\\n     * `recipient`, forwarding all available gas and reverting on errors.\\n     *\\n     * https://eips.ethereum.org/EIPS/eip-1884[EIP1884] increases the gas cost\\n     * of certain opcodes, possibly making contracts go over the 2300 gas limit\\n     * imposed by `transfer`, making them unable to receive funds via\\n     * `transfer`. {sendValue} removes this limitation.\\n     *\\n     * https://consensys.net/diligence/blog/2019/09/stop-using-soliditys-transfer-now/[Learn more].\\n     *\\n     * IMPORTANT: because control is transferred to `recipient`, care must be\\n     * taken to not create reentrancy vulnerabilities. Consider using\\n     * {ReentrancyGuard} or the\\n     * https://solidity.readthedocs.io/en/v0.8.20/security-considerations.html#use-the-checks-effects-interactions-pattern[checks-effects-interactions pattern].\\n     */\\n    function sendValue(address payable recipient, uint256 amount) internal {\\n        if (address(this).balance < amount) {\\n            revert AddressInsufficientBalance(address(this));\\n        }\\n\\n        (bool success, ) = recipient.call{value: amount}(\\\"\\\");\\n        if (!success) {\\n            revert FailedInnerCall();\\n        }\\n    }\\n\\n    /**\\n     * @dev Performs a Solidity function call using a low level `call`. A\\n     * plain `call` is an unsafe replacement for a function call: use this\\n     * function instead.\\n     *\\n     * If `target` reverts with a revert reason or custom error, it is bubbled\\n     * up by this function (like regular Solidity function calls). However, if\\n     * the call reverted with no returned reason, this function reverts with a\\n     * {FailedInnerCall} error.\\n     *\\n     * Returns the raw returned data. To convert to the expected return value,\\n     * use https://solidity.readthedocs.io/en/latest/units-and-global-variables.html?highlight=abi.decode#abi-encoding-and-decoding-functions[`abi.decode`].\\n     *\\n     * Requirements:\\n     *\\n     * - `target` must be a contract.\\n     * - calling `target` with `data` must not revert.\\n     */\\n    function functionCall(address target, bytes memory data) internal returns (bytes memory) {\\n        return functionCallWithValue(target, data, 0);\\n    }\\n\\n    /**\\n     * @dev Same as {xref-Address-functionCall-address-bytes-}[`functionCall`],\\n     * but also transferring `value` wei to `target`.\\n     *\\n     * Requirements:\\n     *\\n     * - the calling contract must have an ETH balance of at least `value`.\\n     * - the called Solidity function must be `payable`.\\n     */\\n    function functionCallWithValue(address target, bytes memory data, uint256 value) internal returns (bytes memory) {\\n        if (address(this).balance < value) {\\n            revert AddressInsufficientBalance(address(this));\\n        }\\n        (bool success, bytes memory returndata) = target.call{value: value}(data);\\n        return verifyCallResultFromTarget(target, success, returndata);\\n    }\\n\\n    /**\\n     * @dev Same as {xref-Address-functionCall-address-bytes-}[`functionCall`],\\n     * but performing a static call.\\n     */\\n    function functionStaticCall(address target, bytes memory data) internal view returns (bytes memory) {\\n        (bool success, bytes memory returndata) = target.staticcall(data);\\n        return verifyCallResultFromTarget(target, success, returndata);\\n    }\\n\\n    /**\\n     * @dev Same as {xref-Address-functionCall-address-bytes-}[`functionCall`],\\n     * but performing a delegate call.\\n     */\\n    function functionDelegateCall(address target, bytes memory data) internal returns (bytes memory) {\\n        (bool success, bytes memory returndata) = target.delegatecall(data);\\n        return verifyCallResultFromTarget(target, success, returndata);\\n    }\\n\\n    /**\\n     * @dev Tool to verify that a low level call to smart-contract was successful, and reverts if the target\\n     * was not a contract or bubbling up the revert reason (falling back to {FailedInnerCall}) in case of an\\n     * unsuccessful call.\\n     */\\n    function verifyCallResultFromTarget(\\n        address target,\\n        bool success,\\n        bytes memory returndata\\n    ) internal view returns (bytes memory) {\\n        if (!success) {\\n            _revert(returndata);\\n        } else {\\n            // only check if target is a contract if the call was successful and the return data is empty\\n            // otherwise we already know that it was a contract\\n            if (returndata.length == 0 && target.code.length == 0) {\\n                revert AddressEmptyCode(target);\\n            }\\n            return returndata;\\n        }\\n    }\\n\\n    /**\\n     * @dev Tool to verify that a low level call was successful, and reverts if it wasn't, either by bubbling the\\n     * revert reason or with a default {FailedInnerCall} error.\\n     */\\n    function verifyCallResult(bool success, bytes memory returndata) internal pure returns (bytes memory) {\\n        if (!success) {\\n            _revert(returndata);\\n        } else {\\n            return returndata;\\n        }\\n    }\\n\\n    /**\\n     * @dev Reverts with returndata if present. Otherwise reverts with {FailedInnerCall}.\\n     */\\n    function _revert(bytes memory returndata) private pure {\\n        // Look for revert reason and bubble it up if present\\n        if (returndata.length > 0) {\\n            // The easiest way to bubble the revert reason is using memory via assembly\\n            /// @solidity memory-safe-assembly\\n            assembly {\\n                let returndata_size := mload(returndata)\\n                revert(add(32, returndata), returndata_size)\\n            }\\n        } else {\\n            revert FailedInnerCall();\\n        }\\n    }\\n}\\n\",\"keccak256\":\"0xaf28a975a78550e45f65e559a3ad6a5ad43b9b8a37366999abd1b7084eb70721\",\"license\":\"MIT\"},\"@openzeppelin/contracts/utils/structs/EnumerableMap.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v5.0.0) (utils/structs/EnumerableMap.sol)\\n// This file was procedurally generated from scripts/generate/templates/EnumerableMap.js.\\n\\npragma solidity ^0.8.20;\\n\\nimport {EnumerableSet} from \\\"./EnumerableSet.sol\\\";\\n\\n/**\\n * @dev Library for managing an enumerable variant of Solidity's\\n * https://solidity.readthedocs.io/en/latest/types.html#mapping-types[`mapping`]\\n * type.\\n *\\n * Maps have the following properties:\\n *\\n * - Entries are added, removed, and checked for existence in constant time\\n * (O(1)).\\n * - Entries are enumerated in O(n). No guarantees are made on the ordering.\\n *\\n * ```solidity\\n * contract Example {\\n *     // Add the library methods\\n *     using EnumerableMap for EnumerableMap.UintToAddressMap;\\n *\\n *     // Declare a set state variable\\n *     EnumerableMap.UintToAddressMap private myMap;\\n * }\\n * ```\\n *\\n * The following map types are supported:\\n *\\n * - `uint256 -> address` (`UintToAddressMap`) since v3.0.0\\n * - `address -> uint256` (`AddressToUintMap`) since v4.6.0\\n * - `bytes32 -> bytes32` (`Bytes32ToBytes32Map`) since v4.6.0\\n * - `uint256 -> uint256` (`UintToUintMap`) since v4.7.0\\n * - `bytes32 -> uint256` (`Bytes32ToUintMap`) since v4.7.0\\n *\\n * [WARNING]\\n * ====\\n * Trying to delete such a structure from storage will likely result in data corruption, rendering the structure\\n * unusable.\\n * See https://github.com/ethereum/solidity/pull/11843[ethereum/solidity#11843] for more info.\\n *\\n * In order to clean an EnumerableMap, you can either remove all elements one by one or create a fresh instance using an\\n * array of EnumerableMap.\\n * ====\\n */\\nlibrary EnumerableMap {\\n    using EnumerableSet for EnumerableSet.Bytes32Set;\\n\\n    // To implement this library for multiple types with as little code repetition as possible, we write it in\\n    // terms of a generic Map type with bytes32 keys and values. The Map implementation uses private functions,\\n    // and user-facing implementations such as `UintToAddressMap` are just wrappers around the underlying Map.\\n    // This means that we can only create new EnumerableMaps for types that fit in bytes32.\\n\\n    /**\\n     * @dev Query for a nonexistent map key.\\n     */\\n    error EnumerableMapNonexistentKey(bytes32 key);\\n\\n    struct Bytes32ToBytes32Map {\\n        // Storage of keys\\n        EnumerableSet.Bytes32Set _keys;\\n        mapping(bytes32 key => bytes32) _values;\\n    }\\n\\n    /**\\n     * @dev Adds a key-value pair to a map, or updates the value for an existing\\n     * key. O(1).\\n     *\\n     * Returns true if the key was added to the map, that is if it was not\\n     * already present.\\n     */\\n    function set(Bytes32ToBytes32Map storage map, bytes32 key, bytes32 value) internal returns (bool) {\\n        map._values[key] = value;\\n        return map._keys.add(key);\\n    }\\n\\n    /**\\n     * @dev Removes a key-value pair from a map. O(1).\\n     *\\n     * Returns true if the key was removed from the map, that is if it was present.\\n     */\\n    function remove(Bytes32ToBytes32Map storage map, bytes32 key) internal returns (bool) {\\n        delete map._values[key];\\n        return map._keys.remove(key);\\n    }\\n\\n    /**\\n     * @dev Returns true if the key is in the map. O(1).\\n     */\\n    function contains(Bytes32ToBytes32Map storage map, bytes32 key) internal view returns (bool) {\\n        return map._keys.contains(key);\\n    }\\n\\n    /**\\n     * @dev Returns the number of key-value pairs in the map. O(1).\\n     */\\n    function length(Bytes32ToBytes32Map storage map) internal view returns (uint256) {\\n        return map._keys.length();\\n    }\\n\\n    /**\\n     * @dev Returns the key-value pair stored at position `index` in the map. O(1).\\n     *\\n     * Note that there are no guarantees on the ordering of entries inside the\\n     * array, and it may change when more entries are added or removed.\\n     *\\n     * Requirements:\\n     *\\n     * - `index` must be strictly less than {length}.\\n     */\\n    function at(Bytes32ToBytes32Map storage map, uint256 index) internal view returns (bytes32, bytes32) {\\n        bytes32 key = map._keys.at(index);\\n        return (key, map._values[key]);\\n    }\\n\\n    /**\\n     * @dev Tries to returns the value associated with `key`. O(1).\\n     * Does not revert if `key` is not in the map.\\n     */\\n    function tryGet(Bytes32ToBytes32Map storage map, bytes32 key) internal view returns (bool, bytes32) {\\n        bytes32 value = map._values[key];\\n        if (value == bytes32(0)) {\\n            return (contains(map, key), bytes32(0));\\n        } else {\\n            return (true, value);\\n        }\\n    }\\n\\n    /**\\n     * @dev Returns the value associated with `key`. O(1).\\n     *\\n     * Requirements:\\n     *\\n     * - `key` must be in the map.\\n     */\\n    function get(Bytes32ToBytes32Map storage map, bytes32 key) internal view returns (bytes32) {\\n        bytes32 value = map._values[key];\\n        if (value == 0 && !contains(map, key)) {\\n            revert EnumerableMapNonexistentKey(key);\\n        }\\n        return value;\\n    }\\n\\n    /**\\n     * @dev Return the an array containing all the keys\\n     *\\n     * WARNING: This operation will copy the entire storage to memory, which can be quite expensive. This is designed\\n     * to mostly be used by view accessors that are queried without any gas fees. Developers should keep in mind that\\n     * this function has an unbounded cost, and using it as part of a state-changing function may render the function\\n     * uncallable if the map grows to a point where copying to memory consumes too much gas to fit in a block.\\n     */\\n    function keys(Bytes32ToBytes32Map storage map) internal view returns (bytes32[] memory) {\\n        return map._keys.values();\\n    }\\n\\n    // UintToUintMap\\n\\n    struct UintToUintMap {\\n        Bytes32ToBytes32Map _inner;\\n    }\\n\\n    /**\\n     * @dev Adds a key-value pair to a map, or updates the value for an existing\\n     * key. O(1).\\n     *\\n     * Returns true if the key was added to the map, that is if it was not\\n     * already present.\\n     */\\n    function set(UintToUintMap storage map, uint256 key, uint256 value) internal returns (bool) {\\n        return set(map._inner, bytes32(key), bytes32(value));\\n    }\\n\\n    /**\\n     * @dev Removes a value from a map. O(1).\\n     *\\n     * Returns true if the key was removed from the map, that is if it was present.\\n     */\\n    function remove(UintToUintMap storage map, uint256 key) internal returns (bool) {\\n        return remove(map._inner, bytes32(key));\\n    }\\n\\n    /**\\n     * @dev Returns true if the key is in the map. O(1).\\n     */\\n    function contains(UintToUintMap storage map, uint256 key) internal view returns (bool) {\\n        return contains(map._inner, bytes32(key));\\n    }\\n\\n    /**\\n     * @dev Returns the number of elements in the map. O(1).\\n     */\\n    function length(UintToUintMap storage map) internal view returns (uint256) {\\n        return length(map._inner);\\n    }\\n\\n    /**\\n     * @dev Returns the element stored at position `index` in the map. O(1).\\n     * Note that there are no guarantees on the ordering of values inside the\\n     * array, and it may change when more values are added or removed.\\n     *\\n     * Requirements:\\n     *\\n     * - `index` must be strictly less than {length}.\\n     */\\n    function at(UintToUintMap storage map, uint256 index) internal view returns (uint256, uint256) {\\n        (bytes32 key, bytes32 value) = at(map._inner, index);\\n        return (uint256(key), uint256(value));\\n    }\\n\\n    /**\\n     * @dev Tries to returns the value associated with `key`. O(1).\\n     * Does not revert if `key` is not in the map.\\n     */\\n    function tryGet(UintToUintMap storage map, uint256 key) internal view returns (bool, uint256) {\\n        (bool success, bytes32 value) = tryGet(map._inner, bytes32(key));\\n        return (success, uint256(value));\\n    }\\n\\n    /**\\n     * @dev Returns the value associated with `key`. O(1).\\n     *\\n     * Requirements:\\n     *\\n     * - `key` must be in the map.\\n     */\\n    function get(UintToUintMap storage map, uint256 key) internal view returns (uint256) {\\n        return uint256(get(map._inner, bytes32(key)));\\n    }\\n\\n    /**\\n     * @dev Return the an array containing all the keys\\n     *\\n     * WARNING: This operation will copy the entire storage to memory, which can be quite expensive. This is designed\\n     * to mostly be used by view accessors that are queried without any gas fees. Developers should keep in mind that\\n     * this function has an unbounded cost, and using it as part of a state-changing function may render the function\\n     * uncallable if the map grows to a point where copying to memory consumes too much gas to fit in a block.\\n     */\\n    function keys(UintToUintMap storage map) internal view returns (uint256[] memory) {\\n        bytes32[] memory store = keys(map._inner);\\n        uint256[] memory result;\\n\\n        /// @solidity memory-safe-assembly\\n        assembly {\\n            result := store\\n        }\\n\\n        return result;\\n    }\\n\\n    // UintToAddressMap\\n\\n    struct UintToAddressMap {\\n        Bytes32ToBytes32Map _inner;\\n    }\\n\\n    /**\\n     * @dev Adds a key-value pair to a map, or updates the value for an existing\\n     * key. O(1).\\n     *\\n     * Returns true if the key was added to the map, that is if it was not\\n     * already present.\\n     */\\n    function set(UintToAddressMap storage map, uint256 key, address value) internal returns (bool) {\\n        return set(map._inner, bytes32(key), bytes32(uint256(uint160(value))));\\n    }\\n\\n    /**\\n     * @dev Removes a value from a map. O(1).\\n     *\\n     * Returns true if the key was removed from the map, that is if it was present.\\n     */\\n    function remove(UintToAddressMap storage map, uint256 key) internal returns (bool) {\\n        return remove(map._inner, bytes32(key));\\n    }\\n\\n    /**\\n     * @dev Returns true if the key is in the map. O(1).\\n     */\\n    function contains(UintToAddressMap storage map, uint256 key) internal view returns (bool) {\\n        return contains(map._inner, bytes32(key));\\n    }\\n\\n    /**\\n     * @dev Returns the number of elements in the map. O(1).\\n     */\\n    function length(UintToAddressMap storage map) internal view returns (uint256) {\\n        return length(map._inner);\\n    }\\n\\n    /**\\n     * @dev Returns the element stored at position `index` in the map. O(1).\\n     * Note that there are no guarantees on the ordering of values inside the\\n     * array, and it may change when more values are added or removed.\\n     *\\n     * Requirements:\\n     *\\n     * - `index` must be strictly less than {length}.\\n     */\\n    function at(UintToAddressMap storage map, uint256 index) internal view returns (uint256, address) {\\n        (bytes32 key, bytes32 value) = at(map._inner, index);\\n        return (uint256(key), address(uint160(uint256(value))));\\n    }\\n\\n    /**\\n     * @dev Tries to returns the value associated with `key`. O(1).\\n     * Does not revert if `key` is not in the map.\\n     */\\n    function tryGet(UintToAddressMap storage map, uint256 key) internal view returns (bool, address) {\\n        (bool success, bytes32 value) = tryGet(map._inner, bytes32(key));\\n        return (success, address(uint160(uint256(value))));\\n    }\\n\\n    /**\\n     * @dev Returns the value associated with `key`. O(1).\\n     *\\n     * Requirements:\\n     *\\n     * - `key` must be in the map.\\n     */\\n    function get(UintToAddressMap storage map, uint256 key) internal view returns (address) {\\n        return address(uint160(uint256(get(map._inner, bytes32(key)))));\\n    }\\n\\n    /**\\n     * @dev Return the an array containing all the keys\\n     *\\n     * WARNING: This operation will copy the entire storage to memory, which can be quite expensive. This is designed\\n     * to mostly be used by view accessors that are queried without any gas fees. Developers should keep in mind that\\n     * this function has an unbounded cost, and using it as part of a state-changing function may render the function\\n     * uncallable if the map grows to a point where copying to memory consumes too much gas to fit in a block.\\n     */\\n    function keys(UintToAddressMap storage map) internal view returns (uint256[] memory) {\\n        bytes32[] memory store = keys(map._inner);\\n        uint256[] memory result;\\n\\n        /// @solidity memory-safe-assembly\\n        assembly {\\n            result := store\\n        }\\n\\n        return result;\\n    }\\n\\n    // AddressToUintMap\\n\\n    struct AddressToUintMap {\\n        Bytes32ToBytes32Map _inner;\\n    }\\n\\n    /**\\n     * @dev Adds a key-value pair to a map, or updates the value for an existing\\n     * key. O(1).\\n     *\\n     * Returns true if the key was added to the map, that is if it was not\\n     * already present.\\n     */\\n    function set(AddressToUintMap storage map, address key, uint256 value) internal returns (bool) {\\n        return set(map._inner, bytes32(uint256(uint160(key))), bytes32(value));\\n    }\\n\\n    /**\\n     * @dev Removes a value from a map. O(1).\\n     *\\n     * Returns true if the key was removed from the map, that is if it was present.\\n     */\\n    function remove(AddressToUintMap storage map, address key) internal returns (bool) {\\n        return remove(map._inner, bytes32(uint256(uint160(key))));\\n    }\\n\\n    /**\\n     * @dev Returns true if the key is in the map. O(1).\\n     */\\n    function contains(AddressToUintMap storage map, address key) internal view returns (bool) {\\n        return contains(map._inner, bytes32(uint256(uint160(key))));\\n    }\\n\\n    /**\\n     * @dev Returns the number of elements in the map. O(1).\\n     */\\n    function length(AddressToUintMap storage map) internal view returns (uint256) {\\n        return length(map._inner);\\n    }\\n\\n    /**\\n     * @dev Returns the element stored at position `index` in the map. O(1).\\n     * Note that there are no guarantees on the ordering of values inside the\\n     * array, and it may change when more values are added or removed.\\n     *\\n     * Requirements:\\n     *\\n     * - `index` must be strictly less than {length}.\\n     */\\n    function at(AddressToUintMap storage map, uint256 index) internal view returns (address, uint256) {\\n        (bytes32 key, bytes32 value) = at(map._inner, index);\\n        return (address(uint160(uint256(key))), uint256(value));\\n    }\\n\\n    /**\\n     * @dev Tries to returns the value associated with `key`. O(1).\\n     * Does not revert if `key` is not in the map.\\n     */\\n    function tryGet(AddressToUintMap storage map, address key) internal view returns (bool, uint256) {\\n        (bool success, bytes32 value) = tryGet(map._inner, bytes32(uint256(uint160(key))));\\n        return (success, uint256(value));\\n    }\\n\\n    /**\\n     * @dev Returns the value associated with `key`. O(1).\\n     *\\n     * Requirements:\\n     *\\n     * - `key` must be in the map.\\n     */\\n    function get(AddressToUintMap storage map, address key) internal view returns (uint256) {\\n        return uint256(get(map._inner, bytes32(uint256(uint160(key)))));\\n    }\\n\\n    /**\\n     * @dev Return the an array containing all the keys\\n     *\\n     * WARNING: This operation will copy the entire storage to memory, which can be quite expensive. This is designed\\n     * to mostly be used by view accessors that are queried without any gas fees. Developers should keep in mind that\\n     * this function has an unbounded cost, and using it as part of a state-changing function may render the function\\n     * uncallable if the map grows to a point where copying to memory consumes too much gas to fit in a block.\\n     */\\n    function keys(AddressToUintMap storage map) internal view returns (address[] memory) {\\n        bytes32[] memory store = keys(map._inner);\\n        address[] memory result;\\n\\n        /// @solidity memory-safe-assembly\\n        assembly {\\n            result := store\\n        }\\n\\n        return result;\\n    }\\n\\n    // Bytes32ToUintMap\\n\\n    struct Bytes32ToUintMap {\\n        Bytes32ToBytes32Map _inner;\\n    }\\n\\n    /**\\n     * @dev Adds a key-value pair to a map, or updates the value for an existing\\n     * key. O(1).\\n     *\\n     * Returns true if the key was added to the map, that is if it was not\\n     * already present.\\n     */\\n    function set(Bytes32ToUintMap storage map, bytes32 key, uint256 value) internal returns (bool) {\\n        return set(map._inner, key, bytes32(value));\\n    }\\n\\n    /**\\n     * @dev Removes a value from a map. O(1).\\n     *\\n     * Returns true if the key was removed from the map, that is if it was present.\\n     */\\n    function remove(Bytes32ToUintMap storage map, bytes32 key) internal returns (bool) {\\n        return remove(map._inner, key);\\n    }\\n\\n    /**\\n     * @dev Returns true if the key is in the map. O(1).\\n     */\\n    function contains(Bytes32ToUintMap storage map, bytes32 key) internal view returns (bool) {\\n        return contains(map._inner, key);\\n    }\\n\\n    /**\\n     * @dev Returns the number of elements in the map. O(1).\\n     */\\n    function length(Bytes32ToUintMap storage map) internal view returns (uint256) {\\n        return length(map._inner);\\n    }\\n\\n    /**\\n     * @dev Returns the element stored at position `index` in the map. O(1).\\n     * Note that there are no guarantees on the ordering of values inside the\\n     * array, and it may change when more values are added or removed.\\n     *\\n     * Requirements:\\n     *\\n     * - `index` must be strictly less than {length}.\\n     */\\n    function at(Bytes32ToUintMap storage map, uint256 index) internal view returns (bytes32, uint256) {\\n        (bytes32 key, bytes32 value) = at(map._inner, index);\\n        return (key, uint256(value));\\n    }\\n\\n    /**\\n     * @dev Tries to returns the value associated with `key`. O(1).\\n     * Does not revert if `key` is not in the map.\\n     */\\n    function tryGet(Bytes32ToUintMap storage map, bytes32 key) internal view returns (bool, uint256) {\\n        (bool success, bytes32 value) = tryGet(map._inner, key);\\n        return (success, uint256(value));\\n    }\\n\\n    /**\\n     * @dev Returns the value associated with `key`. O(1).\\n     *\\n     * Requirements:\\n     *\\n     * - `key` must be in the map.\\n     */\\n    function get(Bytes32ToUintMap storage map, bytes32 key) internal view returns (uint256) {\\n        return uint256(get(map._inner, key));\\n    }\\n\\n    /**\\n     * @dev Return the an array containing all the keys\\n     *\\n     * WARNING: This operation will copy the entire storage to memory, which can be quite expensive. This is designed\\n     * to mostly be used by view accessors that are queried without any gas fees. Developers should keep in mind that\\n     * this function has an unbounded cost, and using it as part of a state-changing function may render the function\\n     * uncallable if the map grows to a point where copying to memory consumes too much gas to fit in a block.\\n     */\\n    function keys(Bytes32ToUintMap storage map) internal view returns (bytes32[] memory) {\\n        bytes32[] memory store = keys(map._inner);\\n        bytes32[] memory result;\\n\\n        /// @solidity memory-safe-assembly\\n        assembly {\\n            result := store\\n        }\\n\\n        return result;\\n    }\\n}\\n\",\"keccak256\":\"0xa3edd94148e931d8a37353624ea57afa1c679b6fe06b7059ccdc8da78a90c123\",\"license\":\"MIT\"},\"@openzeppelin/contracts/utils/structs/EnumerableSet.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v5.0.0) (utils/structs/EnumerableSet.sol)\\n// This file was procedurally generated from scripts/generate/templates/EnumerableSet.js.\\n\\npragma solidity ^0.8.20;\\n\\n/**\\n * @dev Library for managing\\n * https://en.wikipedia.org/wiki/Set_(abstract_data_type)[sets] of primitive\\n * types.\\n *\\n * Sets have the following properties:\\n *\\n * - Elements are added, removed, and checked for existence in constant time\\n * (O(1)).\\n * - Elements are enumerated in O(n). No guarantees are made on the ordering.\\n *\\n * ```solidity\\n * contract Example {\\n *     // Add the library methods\\n *     using EnumerableSet for EnumerableSet.AddressSet;\\n *\\n *     // Declare a set state variable\\n *     EnumerableSet.AddressSet private mySet;\\n * }\\n * ```\\n *\\n * As of v3.3.0, sets of type `bytes32` (`Bytes32Set`), `address` (`AddressSet`)\\n * and `uint256` (`UintSet`) are supported.\\n *\\n * [WARNING]\\n * ====\\n * Trying to delete such a structure from storage will likely result in data corruption, rendering the structure\\n * unusable.\\n * See https://github.com/ethereum/solidity/pull/11843[ethereum/solidity#11843] for more info.\\n *\\n * In order to clean an EnumerableSet, you can either remove all elements one by one or create a fresh instance using an\\n * array of EnumerableSet.\\n * ====\\n */\\nlibrary EnumerableSet {\\n    // To implement this library for multiple types with as little code\\n    // repetition as possible, we write it in terms of a generic Set type with\\n    // bytes32 values.\\n    // The Set implementation uses private functions, and user-facing\\n    // implementations (such as AddressSet) are just wrappers around the\\n    // underlying Set.\\n    // This means that we can only create new EnumerableSets for types that fit\\n    // in bytes32.\\n\\n    struct Set {\\n        // Storage of set values\\n        bytes32[] _values;\\n        // Position is the index of the value in the `values` array plus 1.\\n        // Position 0 is used to mean a value is not in the set.\\n        mapping(bytes32 value => uint256) _positions;\\n    }\\n\\n    /**\\n     * @dev Add a value to a set. O(1).\\n     *\\n     * Returns true if the value was added to the set, that is if it was not\\n     * already present.\\n     */\\n    function _add(Set storage set, bytes32 value) private returns (bool) {\\n        if (!_contains(set, value)) {\\n            set._values.push(value);\\n            // The value is stored at length-1, but we add 1 to all indexes\\n            // and use 0 as a sentinel value\\n            set._positions[value] = set._values.length;\\n            return true;\\n        } else {\\n            return false;\\n        }\\n    }\\n\\n    /**\\n     * @dev Removes a value from a set. O(1).\\n     *\\n     * Returns true if the value was removed from the set, that is if it was\\n     * present.\\n     */\\n    function _remove(Set storage set, bytes32 value) private returns (bool) {\\n        // We cache the value's position to prevent multiple reads from the same storage slot\\n        uint256 position = set._positions[value];\\n\\n        if (position != 0) {\\n            // Equivalent to contains(set, value)\\n            // To delete an element from the _values array in O(1), we swap the element to delete with the last one in\\n            // the array, and then remove the last element (sometimes called as 'swap and pop').\\n            // This modifies the order of the array, as noted in {at}.\\n\\n            uint256 valueIndex = position - 1;\\n            uint256 lastIndex = set._values.length - 1;\\n\\n            if (valueIndex != lastIndex) {\\n                bytes32 lastValue = set._values[lastIndex];\\n\\n                // Move the lastValue to the index where the value to delete is\\n                set._values[valueIndex] = lastValue;\\n                // Update the tracked position of the lastValue (that was just moved)\\n                set._positions[lastValue] = position;\\n            }\\n\\n            // Delete the slot where the moved value was stored\\n            set._values.pop();\\n\\n            // Delete the tracked position for the deleted slot\\n            delete set._positions[value];\\n\\n            return true;\\n        } else {\\n            return false;\\n        }\\n    }\\n\\n    /**\\n     * @dev Returns true if the value is in the set. O(1).\\n     */\\n    function _contains(Set storage set, bytes32 value) private view returns (bool) {\\n        return set._positions[value] != 0;\\n    }\\n\\n    /**\\n     * @dev Returns the number of values on the set. O(1).\\n     */\\n    function _length(Set storage set) private view returns (uint256) {\\n        return set._values.length;\\n    }\\n\\n    /**\\n     * @dev Returns the value stored at position `index` in the set. O(1).\\n     *\\n     * Note that there are no guarantees on the ordering of values inside the\\n     * array, and it may change when more values are added or removed.\\n     *\\n     * Requirements:\\n     *\\n     * - `index` must be strictly less than {length}.\\n     */\\n    function _at(Set storage set, uint256 index) private view returns (bytes32) {\\n        return set._values[index];\\n    }\\n\\n    /**\\n     * @dev Return the entire set in an array\\n     *\\n     * WARNING: This operation will copy the entire storage to memory, which can be quite expensive. This is designed\\n     * to mostly be used by view accessors that are queried without any gas fees. Developers should keep in mind that\\n     * this function has an unbounded cost, and using it as part of a state-changing function may render the function\\n     * uncallable if the set grows to a point where copying to memory consumes too much gas to fit in a block.\\n     */\\n    function _values(Set storage set) private view returns (bytes32[] memory) {\\n        return set._values;\\n    }\\n\\n    // Bytes32Set\\n\\n    struct Bytes32Set {\\n        Set _inner;\\n    }\\n\\n    /**\\n     * @dev Add a value to a set. O(1).\\n     *\\n     * Returns true if the value was added to the set, that is if it was not\\n     * already present.\\n     */\\n    function add(Bytes32Set storage set, bytes32 value) internal returns (bool) {\\n        return _add(set._inner, value);\\n    }\\n\\n    /**\\n     * @dev Removes a value from a set. O(1).\\n     *\\n     * Returns true if the value was removed from the set, that is if it was\\n     * present.\\n     */\\n    function remove(Bytes32Set storage set, bytes32 value) internal returns (bool) {\\n        return _remove(set._inner, value);\\n    }\\n\\n    /**\\n     * @dev Returns true if the value is in the set. O(1).\\n     */\\n    function contains(Bytes32Set storage set, bytes32 value) internal view returns (bool) {\\n        return _contains(set._inner, value);\\n    }\\n\\n    /**\\n     * @dev Returns the number of values in the set. O(1).\\n     */\\n    function length(Bytes32Set storage set) internal view returns (uint256) {\\n        return _length(set._inner);\\n    }\\n\\n    /**\\n     * @dev Returns the value stored at position `index` in the set. O(1).\\n     *\\n     * Note that there are no guarantees on the ordering of values inside the\\n     * array, and it may change when more values are added or removed.\\n     *\\n     * Requirements:\\n     *\\n     * - `index` must be strictly less than {length}.\\n     */\\n    function at(Bytes32Set storage set, uint256 index) internal view returns (bytes32) {\\n        return _at(set._inner, index);\\n    }\\n\\n    /**\\n     * @dev Return the entire set in an array\\n     *\\n     * WARNING: This operation will copy the entire storage to memory, which can be quite expensive. This is designed\\n     * to mostly be used by view accessors that are queried without any gas fees. Developers should keep in mind that\\n     * this function has an unbounded cost, and using it as part of a state-changing function may render the function\\n     * uncallable if the set grows to a point where copying to memory consumes too much gas to fit in a block.\\n     */\\n    function values(Bytes32Set storage set) internal view returns (bytes32[] memory) {\\n        bytes32[] memory store = _values(set._inner);\\n        bytes32[] memory result;\\n\\n        /// @solidity memory-safe-assembly\\n        assembly {\\n            result := store\\n        }\\n\\n        return result;\\n    }\\n\\n    // AddressSet\\n\\n    struct AddressSet {\\n        Set _inner;\\n    }\\n\\n    /**\\n     * @dev Add a value to a set. O(1).\\n     *\\n     * Returns true if the value was added to the set, that is if it was not\\n     * already present.\\n     */\\n    function add(AddressSet storage set, address value) internal returns (bool) {\\n        return _add(set._inner, bytes32(uint256(uint160(value))));\\n    }\\n\\n    /**\\n     * @dev Removes a value from a set. O(1).\\n     *\\n     * Returns true if the value was removed from the set, that is if it was\\n     * present.\\n     */\\n    function remove(AddressSet storage set, address value) internal returns (bool) {\\n        return _remove(set._inner, bytes32(uint256(uint160(value))));\\n    }\\n\\n    /**\\n     * @dev Returns true if the value is in the set. O(1).\\n     */\\n    function contains(AddressSet storage set, address value) internal view returns (bool) {\\n        return _contains(set._inner, bytes32(uint256(uint160(value))));\\n    }\\n\\n    /**\\n     * @dev Returns the number of values in the set. O(1).\\n     */\\n    function length(AddressSet storage set) internal view returns (uint256) {\\n        return _length(set._inner);\\n    }\\n\\n    /**\\n     * @dev Returns the value stored at position `index` in the set. O(1).\\n     *\\n     * Note that there are no guarantees on the ordering of values inside the\\n     * array, and it may change when more values are added or removed.\\n     *\\n     * Requirements:\\n     *\\n     * - `index` must be strictly less than {length}.\\n     */\\n    function at(AddressSet storage set, uint256 index) internal view returns (address) {\\n        return address(uint160(uint256(_at(set._inner, index))));\\n    }\\n\\n    /**\\n     * @dev Return the entire set in an array\\n     *\\n     * WARNING: This operation will copy the entire storage to memory, which can be quite expensive. This is designed\\n     * to mostly be used by view accessors that are queried without any gas fees. Developers should keep in mind that\\n     * this function has an unbounded cost, and using it as part of a state-changing function may render the function\\n     * uncallable if the set grows to a point where copying to memory consumes too much gas to fit in a block.\\n     */\\n    function values(AddressSet storage set) internal view returns (address[] memory) {\\n        bytes32[] memory store = _values(set._inner);\\n        address[] memory result;\\n\\n        /// @solidity memory-safe-assembly\\n        assembly {\\n            result := store\\n        }\\n\\n        return result;\\n    }\\n\\n    // UintSet\\n\\n    struct UintSet {\\n        Set _inner;\\n    }\\n\\n    /**\\n     * @dev Add a value to a set. O(1).\\n     *\\n     * Returns true if the value was added to the set, that is if it was not\\n     * already present.\\n     */\\n    function add(UintSet storage set, uint256 value) internal returns (bool) {\\n        return _add(set._inner, bytes32(value));\\n    }\\n\\n    /**\\n     * @dev Removes a value from a set. O(1).\\n     *\\n     * Returns true if the value was removed from the set, that is if it was\\n     * present.\\n     */\\n    function remove(UintSet storage set, uint256 value) internal returns (bool) {\\n        return _remove(set._inner, bytes32(value));\\n    }\\n\\n    /**\\n     * @dev Returns true if the value is in the set. O(1).\\n     */\\n    function contains(UintSet storage set, uint256 value) internal view returns (bool) {\\n        return _contains(set._inner, bytes32(value));\\n    }\\n\\n    /**\\n     * @dev Returns the number of values in the set. O(1).\\n     */\\n    function length(UintSet storage set) internal view returns (uint256) {\\n        return _length(set._inner);\\n    }\\n\\n    /**\\n     * @dev Returns the value stored at position `index` in the set. O(1).\\n     *\\n     * Note that there are no guarantees on the ordering of values inside the\\n     * array, and it may change when more values are added or removed.\\n     *\\n     * Requirements:\\n     *\\n     * - `index` must be strictly less than {length}.\\n     */\\n    function at(UintSet storage set, uint256 index) internal view returns (uint256) {\\n        return uint256(_at(set._inner, index));\\n    }\\n\\n    /**\\n     * @dev Return the entire set in an array\\n     *\\n     * WARNING: This operation will copy the entire storage to memory, which can be quite expensive. This is designed\\n     * to mostly be used by view accessors that are queried without any gas fees. Developers should keep in mind that\\n     * this function has an unbounded cost, and using it as part of a state-changing function may render the function\\n     * uncallable if the set grows to a point where copying to memory consumes too much gas to fit in a block.\\n     */\\n    function values(UintSet storage set) internal view returns (uint256[] memory) {\\n        bytes32[] memory store = _values(set._inner);\\n        uint256[] memory result;\\n\\n        /// @solidity memory-safe-assembly\\n        assembly {\\n            result := store\\n        }\\n\\n        return result;\\n    }\\n}\\n\",\"keccak256\":\"0x86c1470cbfd878491e5de030072b647352d36bd27122cffb928970b1945282aa\",\"license\":\"MIT\"},\"contracts/core/OPAIStake.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n\\npragma solidity 0.8.20;\\n\\nimport \\\"./Stake.sol\\\";\\n\\ncontract OPAIStake is Stake {\\n\\tconstructor(IERC20 token) Stake(token) {}\\n}\",\"keccak256\":\"0xa873d605bd8ba06fdcb6a5b7fa335ec29ce08a296f7e3a25c8542d14fa49d8da\",\"license\":\"MIT\"},\"contracts/core/Stake.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n\\npragma solidity 0.8.20;\\n\\nimport \\\"@openzeppelin/contracts/token/ERC20/IERC20.sol\\\";\\nimport \\\"@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol\\\";\\nimport \\\"@openzeppelin/contracts/utils/structs/EnumerableMap.sol\\\";\\nimport \\\"../dependencies/EnumerableApply.sol\\\";\\n\\ncontract Stake {\\n\\tusing SafeERC20 for IERC20;\\n\\tusing EnumerableMap for EnumerableMap.AddressToUintMap;\\n\\tusing EnumerableApply for EnumerableApply.UintToApply;\\n\\n\\tuint64 public immutable LOCKTIME = 5 minutes;\\n\\tIERC20 public immutable TOKEN;\\n\\n\\tEnumerableMap.AddressToUintMap internal stakes;\\n\\n\\tmapping(address => uint256) internal applyIds;\\n\\n\\tmapping(address => EnumerableApply.UintToApply) internal applies;\\n\\n\\tevent Staked(address account, uint256 amount);\\n\\n\\tevent ApplyUnstaked(address account, uint256 applyId, uint256 amount, uint256 applyTime);\\n\\n\\tevent Unstaked(address account, uint256 applyId, uint256 amount);\\n\\n\\tconstructor(IERC20 _token) {\\n\\t\\tTOKEN = _token;\\n\\t}\\n\\n\\tfunction stake(uint256 amount) public virtual {\\n\\t\\trequire(amount > 0, \\\"amount must be greater than 0\\\");\\n\\t\\tTOKEN.safeTransferFrom(msg.sender, address(this), amount);\\n\\t\\tuint256 oldAmount = getStake(msg.sender);\\n\\t\\tstakes.set(msg.sender, oldAmount + amount);\\n\\t\\temit Staked(msg.sender, amount);\\n\\t}\\n\\n\\tfunction applyUnstake(uint256 amount) external {\\n\\t\\trequire(amount > 0, \\\"amount must be greater than 0\\\");\\n\\t\\tuint256 oldAmount = getStake(msg.sender);\\n\\t\\trequire(amount <= oldAmount, \\\"amount must be less than stakes\\\");\\n\\t\\tuint256 id = applyIds[msg.sender];\\n\\t\\tuint256 newStake = oldAmount - amount;\\n\\t\\tif (newStake == 0) {\\n\\t\\t\\tstakes.remove(msg.sender);\\n\\t\\t} else {\\n\\t\\t\\tstakes.set(msg.sender, newStake);\\n\\t\\t}\\n\\t\\tapplies[msg.sender].set(id, EnumerableApply.ApplyInfo(amount, block.timestamp));\\n\\t\\tapplyIds[msg.sender]++;\\n\\t\\temit ApplyUnstaked(msg.sender, id, amount, block.timestamp);\\n\\t}\\n\\n\\tfunction unstake(address to, uint256 applyId) external {\\n\\t\\trequire(applies[msg.sender].contains(applyId), \\\"nonexistent apply\\\");\\n\\t\\tEnumerableApply.ApplyInfo memory info = getApply(msg.sender, applyId);\\n\\t\\trequire(info.applyTime + LOCKTIME <= block.timestamp, \\\"unstake locktime not expired\\\");\\n\\t\\tTOKEN.safeTransfer(to, info.amount);\\n\\t\\tapplies[msg.sender].remove(applyId);\\n\\t\\temit Unstaked(msg.sender, applyId, info.amount);\\n\\t}\\n\\n\\tfunction getStake(address account) public view returns (uint256) {\\n\\t\\tif (!stakes.contains(account)) {\\n\\t\\t\\treturn 0;\\n\\t\\t}\\n\\t\\treturn stakes.get(account);\\n\\t}\\n\\n\\tfunction stakesOf(uint256 start, uint256 amount) public view returns (address[] memory stakers, uint256[] memory amounts) {\\n\\t\\tuint256 size = stakeLength();\\n\\t\\tif (size != 0) {\\n\\t\\t\\trequire(start < size, \\\"invalid start\\\");\\n\\t\\t\\tif (start + amount > size) {\\n\\t\\t\\t\\tamount = size - start;\\n\\t\\t\\t}\\n\\t\\t\\tstakers = new address[](amount);\\n\\t\\t\\tamounts = new uint256[](amount);\\n\\t\\t\\tfor (uint256 i = 0; i < amount; i++) {\\n\\t\\t\\t\\t(stakers[i], amounts[i]) = stakes.at(start + i);\\n\\t\\t\\t}\\n\\t\\t}\\n\\t}\\n\\n\\tfunction stakeLength() public view returns (uint256) {\\n\\t\\treturn stakes.length();\\n\\t}\\n\\n\\tfunction applyLength(address account) public view returns (uint256) {\\n\\t\\treturn applies[account].length();\\n\\t}\\n\\n\\tfunction applyOf(address account, uint256 start, uint256 amount) public view returns (uint256[] memory ids, EnumerableApply.ApplyInfo[] memory infos) {\\n\\t\\tuint256 size = applyLength(account);\\n\\t\\trequire(start < size, \\\"invalid start\\\");\\n\\t\\tif (start + amount > size) {\\n\\t\\t\\tamount = size - start;\\n\\t\\t}\\n\\t\\tids = new uint256[](amount);\\n\\t\\tinfos = new EnumerableApply.ApplyInfo[](amount);\\n\\t\\tfor (uint256 i = 0; i < amount; i++) {\\n\\t\\t\\t(ids[i], infos[i]) = applies[account].at(start + i);\\n\\t\\t}\\n\\t}\\n\\n\\tfunction getApply(address account, uint256 applyId) public view returns (EnumerableApply.ApplyInfo memory info) {\\n\\t\\treturn applies[account].get(applyId);\\n\\t}\\n}\\n\",\"keccak256\":\"0xeb314d97ac7655775e36dc5ea5fd9f92ea8fcf711b12f5b2b81281dc3a2629aa\",\"license\":\"MIT\"},\"contracts/dependencies/EnumerableApply.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n\\npragma solidity 0.8.20;\\n\\nimport \\\"@openzeppelin/contracts/utils/structs/EnumerableSet.sol\\\";\\n\\nlibrary EnumerableApply {\\n\\tusing EnumerableSet for EnumerableSet.Bytes32Set;\\n\\terror EnumerableMapNonexistentKey(uint256 key);\\n\\n\\tstruct ApplyInfo {\\n\\t\\tuint256 amount;\\n\\t\\tuint256 applyTime;\\n\\t}\\n\\n\\tstruct UintToApply {\\n\\t\\tEnumerableSet.Bytes32Set _keys;\\n\\t\\tmapping(uint256 => ApplyInfo) _values;\\n\\t}\\n\\n\\tfunction set(UintToApply storage map, uint256 key, ApplyInfo memory value) internal returns (bool) {\\n\\t\\tmap._values[key] = value;\\n\\t\\treturn map._keys.add(bytes32(key));\\n\\t}\\n\\n\\tfunction remove(UintToApply storage map, uint256 key) internal returns (bool) {\\n\\t\\tdelete map._values[key];\\n\\t\\treturn map._keys.remove(bytes32(key));\\n\\t}\\n\\n\\tfunction contains(UintToApply storage map, uint256 key) internal view returns (bool) {\\n\\t\\treturn map._keys.contains(bytes32(key));\\n\\t}\\n\\n\\tfunction length(UintToApply storage map) internal view returns (uint256) {\\n\\t\\treturn map._keys.length();\\n\\t}\\n\\n\\tfunction at(UintToApply storage map, uint256 index) internal view returns (uint256, ApplyInfo memory) {\\n\\t\\tbytes32 key = map._keys.at(index);\\n\\t\\treturn (uint256(key), map._values[uint256(key)]);\\n\\t}\\n\\n\\tfunction tryGet(UintToApply storage map, uint256 key) internal view returns (bool, ApplyInfo memory) {\\n\\t\\tApplyInfo memory value = map._values[key];\\n\\t\\tif (value.applyTime == 0) {\\n\\t\\t\\treturn (contains(map, key), ApplyInfo({ amount: 0, applyTime: 0 }));\\n\\t\\t} else {\\n\\t\\t\\treturn (true, value);\\n\\t\\t}\\n\\t}\\n\\n\\tfunction get(UintToApply storage map, uint256 key) internal view returns (ApplyInfo memory) {\\n\\t\\tApplyInfo memory value = map._values[key];\\n\\t\\tif (value.applyTime == 0 && !contains(map, key)) {\\n\\t\\t\\trevert EnumerableMapNonexistentKey(key);\\n\\t\\t}\\n\\t\\treturn value;\\n\\t}\\n\\n\\tfunction keys(UintToApply storage map) internal view returns (bytes32[] memory) {\\n\\t\\treturn map._keys.values();\\n\\t}\\n}\\n\",\"keccak256\":\"0xba73d341d38bd752b9c5148a86c65f6b14f70cc6b757d11168f2ef50106aeff7\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x60c060405261012c67ffffffffffffffff1660809067ffffffffffffffff168152503480156200002e57600080fd5b506040516200238f3803806200238f83398181016040528101906200005491906200010f565b808073ffffffffffffffffffffffffffffffffffffffff1660a08173ffffffffffffffffffffffffffffffffffffffff1681525050505062000141565b600080fd5b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b6000620000c38262000096565b9050919050565b6000620000d782620000b6565b9050919050565b620000e981620000ca565b8114620000f557600080fd5b50565b6000815190506200010981620000de565b92915050565b60006020828403121562000128576200012762000091565b5b60006200013884828501620000f8565b91505092915050565b60805160a0516122136200017c60003960008181610475015281816104e201526106b8015260008181610250015261063401526122136000f3fe608060405234801561001057600080fd5b50600436106100a95760003560e01c8063c2a672e011610071578063c2a672e014610167578063c3b44ef414610183578063ce5ba450146101b3578063d4967282146101cf578063f155c6bf146101ed578063f9a64cc01461021d576100a9565b8063242c8e69146100ae57806371bdf9ea146100cc5780637a766460146100fd57806382bfefc81461012d578063a694fc3a1461014b575b600080fd5b6100b661024e565b6040516100c39190611686565b60405180910390f35b6100e660048036038101906100e191906116dc565b610272565b6040516100f49291906118ca565b60405180910390f35b6101176004803603810190610112919061192d565b610434565b6040516101249190611969565b60405180910390f35b610135610473565b60405161014291906119e3565b60405180910390f35b610165600480360381019061016091906119fe565b610497565b005b610181600480360381019061017c9190611a2b565b610593565b005b61019d60048036038101906101989190611a2b565b610792565b6040516101aa9190611a9a565b60405180910390f35b6101cd60048036038101906101c891906119fe565b6107f3565b005b6101d7610a14565b6040516101e49190611969565b60405180910390f35b6102076004803603810190610202919061192d565b610a25565b6040516102149190611969565b60405180910390f35b61023760048036038101906102329190611ab5565b610a75565b604051610245929190611be6565b60405180910390f35b7f000000000000000000000000000000000000000000000000000000000000000081565b606080600061027f610a14565b90506000811461042c578085106102cb576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004016102c290611c7a565b60405180910390fd5b8084866102d89190611cc9565b11156102ed5784816102ea9190611cfd565b93505b8367ffffffffffffffff81111561030757610306611d31565b5b6040519080825280602002602001820160405280156103355781602001602082028036833780820191505090505b5092508367ffffffffffffffff81111561035257610351611d31565b5b6040519080825280602002602001820160405280156103805781602001602082028036833780820191505090505b50915060005b8481101561042a576103ad818761039d9190611cc9565b6000610c4b90919063ffffffff16565b8583815181106103c0576103bf611d60565b5b602002602001018584815181106103da576103d9611d60565b5b60200260200101828152508273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152505050808061042290611d8f565b915050610386565b505b509250929050565b600061044a826000610c7790919063ffffffff16565b610457576000905061046e565b61046b826000610ca790919063ffffffff16565b90505b919050565b7f000000000000000000000000000000000000000000000000000000000000000081565b600081116104da576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004016104d190611e23565b60405180910390fd5b6105273330837f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff16610cda909392919063ffffffff16565b600061053233610434565b90506105553383836105449190611cc9565b6000610d5c9092919063ffffffff16565b507f9e71bc8eea02a63969f509818f2dafb9254532904319f9dbda79b67bd34a5f3d3383604051610587929190611e52565b60405180910390a15050565b6105e481600460003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020610d9190919063ffffffff16565b610623576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161061a90611ec7565b60405180910390fd5b600061062f3383610792565b9050427f000000000000000000000000000000000000000000000000000000000000000067ffffffffffffffff16826020015161066c9190611cc9565b11156106ad576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004016106a490611f33565b60405180910390fd5b6106fc8382600001517f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff16610db49092919063ffffffff16565b61074d82600460003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020610e3390919063ffffffff16565b507f7fc4727e062e336010f2c282598ef5f14facb3de68cf8195c2f23e1454b2b74e3383836000015160405161078593929190611f53565b60405180910390a1505050565b61079a611649565b6107eb82600460008673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020610e7e90919063ffffffff16565b905092915050565b60008111610836576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161082d90611e23565b60405180910390fd5b600061084133610434565b905080821115610886576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161087d90611fd6565b60405180910390fd5b6000600360003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020549050600083836108d89190611cfd565b9050600081036108fc576108f6336000610f2590919063ffffffff16565b50610914565b61091233826000610d5c9092919063ffffffff16565b505b61097b82604051806040016040528087815260200142815250600460003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020610f559092919063ffffffff16565b50600360003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060008154809291906109cc90611d8f565b91905055507fb3a097b9b09df137b8d0b2cd75a0006fdbeb32e0cc39366c7fa0929d1ce9fc2133838642604051610a069493929190611ff6565b60405180910390a150505050565b6000610a206000610fa6565b905090565b6000610a6e600460008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020610fbb565b9050919050565b6060806000610a8386610a25565b9050808510610ac7576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401610abe90611c7a565b60405180910390fd5b808486610ad49190611cc9565b1115610ae9578481610ae69190611cfd565b93505b8367ffffffffffffffff811115610b0357610b02611d31565b5b604051908082528060200260200182016040528015610b315781602001602082028036833780820191505090505b5092508367ffffffffffffffff811115610b4e57610b4d611d31565b5b604051908082528060200260200182016040528015610b8757816020015b610b74611649565b815260200190600190039081610b6c5790505b50915060005b84811015610c4157610bf18187610ba49190611cc9565b600460008a73ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020610fd090919063ffffffff16565b858381518110610c0457610c03611d60565b5b60200260200101858481518110610c1e57610c1d611d60565b5b602002602001018290528281525050508080610c3990611d8f565b915050610b8d565b5050935093915050565b600080600080610c5e866000018661103e565b915091508160001c8160001c9350935050509250929050565b6000610c9f836000018373ffffffffffffffffffffffffffffffffffffffff1660001b61107e565b905092915050565b6000610ccf836000018373ffffffffffffffffffffffffffffffffffffffff1660001b61109e565b60001c905092915050565b610d56848573ffffffffffffffffffffffffffffffffffffffff166323b872dd868686604051602401610d0f9392919061203b565b604051602081830303815290604052915060e01b6020820180517bffffffffffffffffffffffffffffffffffffffffffffffffffffffff838183161783525050505061111e565b50505050565b6000610d88846000018473ffffffffffffffffffffffffffffffffffffffff1660001b8460001b6111b5565b90509392505050565b6000610dac8260001b846000016111f090919063ffffffff16565b905092915050565b610e2e838473ffffffffffffffffffffffffffffffffffffffff1663a9059cbb8585604051602401610de7929190611e52565b604051602081830303815290604052915060e01b6020820180517bffffffffffffffffffffffffffffffffffffffffffffffffffffffff838183161783525050505061111e565b505050565b600082600201600083815260200190815260200160002060008082016000905560018201600090555050610e768260001b8460000161120790919063ffffffff16565b905092915050565b610e86611649565b600083600201600084815260200190815260200160002060405180604001604052908160008201548152602001600182015481525050905060008160200151148015610ed95750610ed78484610d91565b155b15610f1b57826040517f3a054bd4000000000000000000000000000000000000000000000000000000008152600401610f129190611969565b60405180910390fd5b8091505092915050565b6000610f4d836000018373ffffffffffffffffffffffffffffffffffffffff1660001b61121e565b905092915050565b6000818460020160008581526020019081526020016000206000820151816000015560208201518160010155905050610f9d8360001b8560000161125790919063ffffffff16565b90509392505050565b6000610fb48260000161126e565b9050919050565b6000610fc982600001611283565b9050919050565b6000610fda611649565b6000610ff2848660000161129890919063ffffffff16565b90508060001c8560020160008360001c81526020019081526020016000208060405180604001604052908160008201548152602001600182015481525050905092509250509250929050565b6000806000611059848660000161129890919063ffffffff16565b9050808560020160008381526020019081526020016000205492509250509250929050565b600061109682846000016111f090919063ffffffff16565b905092915050565b6000808360020160008481526020019081526020016000205490506000801b811480156110d257506110d0848461107e565b155b1561111457826040517f02b5668600000000000000000000000000000000000000000000000000000000815260040161110b919061208b565b60405180910390fd5b8091505092915050565b6000611149828473ffffffffffffffffffffffffffffffffffffffff166112af90919063ffffffff16565b9050600081511415801561116e57508080602001905181019061116c91906120de565b155b156111b057826040517f5274afe70000000000000000000000000000000000000000000000000000000081526004016111a7919061210b565b60405180910390fd5b505050565b600081846002016000858152602001908152602001600020819055506111e7838560000161125790919063ffffffff16565b90509392505050565b60006111ff83600001836112c5565b905092915050565b600061121683600001836112e8565b905092915050565b60008260020160008381526020019081526020016000206000905561124f828460000161120790919063ffffffff16565b905092915050565b600061126683600001836113fc565b905092915050565b600061127c82600001611283565b9050919050565b60006112918260000161146c565b9050919050565b60006112a7836000018361147d565b905092915050565b60606112bd838360006114a8565b905092915050565b600080836001016000848152602001908152602001600020541415905092915050565b600080836001016000848152602001908152602001600020549050600081146113f057600060018261131a9190611cfd565b90506000600186600001805490506113329190611cfd565b90508082146113a157600086600001828154811061135357611352611d60565b5b906000526020600020015490508087600001848154811061137757611376611d60565b5b90600052602060002001819055508387600101600083815260200190815260200160002081905550505b856000018054806113b5576113b4612126565b5b6001900381819060005260206000200160009055905585600101600086815260200190815260200160002060009055600193505050506113f6565b60009150505b92915050565b600061140883836112c5565b611461578260000182908060018154018082558091505060019003906000526020600020016000909190919091505582600001805490508360010160008481526020019081526020016000208190555060019050611466565b600090505b92915050565b600081600001805490509050919050565b600082600001828154811061149557611494611d60565b5b9060005260206000200154905092915050565b6060814710156114ef57306040517fcd7860590000000000000000000000000000000000000000000000000000000081526004016114e6919061210b565b60405180910390fd5b6000808573ffffffffffffffffffffffffffffffffffffffff16848660405161151891906121c6565b60006040518083038185875af1925050503d8060008114611555576040519150601f19603f3d011682016040523d82523d6000602084013e61155a565b606091505b509150915061156a868383611575565b925050509392505050565b60608261158a5761158582611604565b6115fc565b600082511480156115b2575060008473ffffffffffffffffffffffffffffffffffffffff163b145b156115f457836040517f9996b3150000000000000000000000000000000000000000000000000000000081526004016115eb919061210b565b60405180910390fd5b8190506115fd565b5b9392505050565b6000815111156116175780518082602001fd5b6040517f1425ea4200000000000000000000000000000000000000000000000000000000815260040160405180910390fd5b604051806040016040528060008152602001600081525090565b600067ffffffffffffffff82169050919050565b61168081611663565b82525050565b600060208201905061169b6000830184611677565b92915050565b600080fd5b6000819050919050565b6116b9816116a6565b81146116c457600080fd5b50565b6000813590506116d6816116b0565b92915050565b600080604083850312156116f3576116f26116a1565b5b6000611701858286016116c7565b9250506020611712858286016116c7565b9150509250929050565b600081519050919050565b600082825260208201905092915050565b6000819050602082019050919050565b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b600061177382611748565b9050919050565b61178381611768565b82525050565b6000611795838361177a565b60208301905092915050565b6000602082019050919050565b60006117b98261171c565b6117c38185611727565b93506117ce83611738565b8060005b838110156117ff5781516117e68882611789565b97506117f1836117a1565b9250506001810190506117d2565b5085935050505092915050565b600081519050919050565b600082825260208201905092915050565b6000819050602082019050919050565b611841816116a6565b82525050565b60006118538383611838565b60208301905092915050565b6000602082019050919050565b60006118778261180c565b6118818185611817565b935061188c83611828565b8060005b838110156118bd5781516118a48882611847565b97506118af8361185f565b925050600181019050611890565b5085935050505092915050565b600060408201905081810360008301526118e481856117ae565b905081810360208301526118f8818461186c565b90509392505050565b61190a81611768565b811461191557600080fd5b50565b60008135905061192781611901565b92915050565b600060208284031215611943576119426116a1565b5b600061195184828501611918565b91505092915050565b611963816116a6565b82525050565b600060208201905061197e600083018461195a565b92915050565b6000819050919050565b60006119a96119a461199f84611748565b611984565b611748565b9050919050565b60006119bb8261198e565b9050919050565b60006119cd826119b0565b9050919050565b6119dd816119c2565b82525050565b60006020820190506119f860008301846119d4565b92915050565b600060208284031215611a1457611a136116a1565b5b6000611a22848285016116c7565b91505092915050565b60008060408385031215611a4257611a416116a1565b5b6000611a5085828601611918565b9250506020611a61858286016116c7565b9150509250929050565b604082016000820151611a816000850182611838565b506020820151611a946020850182611838565b50505050565b6000604082019050611aaf6000830184611a6b565b92915050565b600080600060608486031215611ace57611acd6116a1565b5b6000611adc86828701611918565b9350506020611aed868287016116c7565b9250506040611afe868287016116c7565b9150509250925092565b600081519050919050565b600082825260208201905092915050565b6000819050602082019050919050565b604082016000820151611b4a6000850182611838565b506020820151611b5d6020850182611838565b50505050565b6000611b6f8383611b34565b60408301905092915050565b6000602082019050919050565b6000611b9382611b08565b611b9d8185611b13565b9350611ba883611b24565b8060005b83811015611bd9578151611bc08882611b63565b9750611bcb83611b7b565b925050600181019050611bac565b5085935050505092915050565b60006040820190508181036000830152611c00818561186c565b90508181036020830152611c148184611b88565b90509392505050565b600082825260208201905092915050565b7f696e76616c696420737461727400000000000000000000000000000000000000600082015250565b6000611c64600d83611c1d565b9150611c6f82611c2e565b602082019050919050565b60006020820190508181036000830152611c9381611c57565b9050919050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fd5b6000611cd4826116a6565b9150611cdf836116a6565b9250828201905080821115611cf757611cf6611c9a565b5b92915050565b6000611d08826116a6565b9150611d13836116a6565b9250828203905081811115611d2b57611d2a611c9a565b5b92915050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052604160045260246000fd5b7f4e487b7100000000000000000000000000000000000000000000000000000000600052603260045260246000fd5b6000611d9a826116a6565b91507fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff8203611dcc57611dcb611c9a565b5b600182019050919050565b7f616d6f756e74206d7573742062652067726561746572207468616e2030000000600082015250565b6000611e0d601d83611c1d565b9150611e1882611dd7565b602082019050919050565b60006020820190508181036000830152611e3c81611e00565b9050919050565b611e4c81611768565b82525050565b6000604082019050611e676000830185611e43565b611e74602083018461195a565b9392505050565b7f6e6f6e6578697374656e74206170706c79000000000000000000000000000000600082015250565b6000611eb1601183611c1d565b9150611ebc82611e7b565b602082019050919050565b60006020820190508181036000830152611ee081611ea4565b9050919050565b7f756e7374616b65206c6f636b74696d65206e6f74206578706972656400000000600082015250565b6000611f1d601c83611c1d565b9150611f2882611ee7565b602082019050919050565b60006020820190508181036000830152611f4c81611f10565b9050919050565b6000606082019050611f686000830186611e43565b611f75602083018561195a565b611f82604083018461195a565b949350505050565b7f616d6f756e74206d757374206265206c657373207468616e207374616b657300600082015250565b6000611fc0601f83611c1d565b9150611fcb82611f8a565b602082019050919050565b60006020820190508181036000830152611fef81611fb3565b9050919050565b600060808201905061200b6000830187611e43565b612018602083018661195a565b612025604083018561195a565b612032606083018461195a565b95945050505050565b60006060820190506120506000830186611e43565b61205d6020830185611e43565b61206a604083018461195a565b949350505050565b6000819050919050565b61208581612072565b82525050565b60006020820190506120a0600083018461207c565b92915050565b60008115159050919050565b6120bb816120a6565b81146120c657600080fd5b50565b6000815190506120d8816120b2565b92915050565b6000602082840312156120f4576120f36116a1565b5b6000612102848285016120c9565b91505092915050565b60006020820190506121206000830184611e43565b92915050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052603160045260246000fd5b600081519050919050565b600081905092915050565b60005b8381101561218957808201518184015260208101905061216e565b60008484015250505050565b60006121a082612155565b6121aa8185612160565b93506121ba81856020860161216b565b80840191505092915050565b60006121d28284612195565b91508190509291505056fea2646970667358221220531a6ff448701178bd75bcfa1b78183d4e2478e136cbb3efed50b758b698116c64736f6c63430008140033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100a95760003560e01c8063c2a672e011610071578063c2a672e014610167578063c3b44ef414610183578063ce5ba450146101b3578063d4967282146101cf578063f155c6bf146101ed578063f9a64cc01461021d576100a9565b8063242c8e69146100ae57806371bdf9ea146100cc5780637a766460146100fd57806382bfefc81461012d578063a694fc3a1461014b575b600080fd5b6100b661024e565b6040516100c39190611686565b60405180910390f35b6100e660048036038101906100e191906116dc565b610272565b6040516100f49291906118ca565b60405180910390f35b6101176004803603810190610112919061192d565b610434565b6040516101249190611969565b60405180910390f35b610135610473565b60405161014291906119e3565b60405180910390f35b610165600480360381019061016091906119fe565b610497565b005b610181600480360381019061017c9190611a2b565b610593565b005b61019d60048036038101906101989190611a2b565b610792565b6040516101aa9190611a9a565b60405180910390f35b6101cd60048036038101906101c891906119fe565b6107f3565b005b6101d7610a14565b6040516101e49190611969565b60405180910390f35b6102076004803603810190610202919061192d565b610a25565b6040516102149190611969565b60405180910390f35b61023760048036038101906102329190611ab5565b610a75565b604051610245929190611be6565b60405180910390f35b7f000000000000000000000000000000000000000000000000000000000000000081565b606080600061027f610a14565b90506000811461042c578085106102cb576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004016102c290611c7a565b60405180910390fd5b8084866102d89190611cc9565b11156102ed5784816102ea9190611cfd565b93505b8367ffffffffffffffff81111561030757610306611d31565b5b6040519080825280602002602001820160405280156103355781602001602082028036833780820191505090505b5092508367ffffffffffffffff81111561035257610351611d31565b5b6040519080825280602002602001820160405280156103805781602001602082028036833780820191505090505b50915060005b8481101561042a576103ad818761039d9190611cc9565b6000610c4b90919063ffffffff16565b8583815181106103c0576103bf611d60565b5b602002602001018584815181106103da576103d9611d60565b5b60200260200101828152508273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152505050808061042290611d8f565b915050610386565b505b509250929050565b600061044a826000610c7790919063ffffffff16565b610457576000905061046e565b61046b826000610ca790919063ffffffff16565b90505b919050565b7f000000000000000000000000000000000000000000000000000000000000000081565b600081116104da576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004016104d190611e23565b60405180910390fd5b6105273330837f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff16610cda909392919063ffffffff16565b600061053233610434565b90506105553383836105449190611cc9565b6000610d5c9092919063ffffffff16565b507f9e71bc8eea02a63969f509818f2dafb9254532904319f9dbda79b67bd34a5f3d3383604051610587929190611e52565b60405180910390a15050565b6105e481600460003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020610d9190919063ffffffff16565b610623576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161061a90611ec7565b60405180910390fd5b600061062f3383610792565b9050427f000000000000000000000000000000000000000000000000000000000000000067ffffffffffffffff16826020015161066c9190611cc9565b11156106ad576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004016106a490611f33565b60405180910390fd5b6106fc8382600001517f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff16610db49092919063ffffffff16565b61074d82600460003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020610e3390919063ffffffff16565b507f7fc4727e062e336010f2c282598ef5f14facb3de68cf8195c2f23e1454b2b74e3383836000015160405161078593929190611f53565b60405180910390a1505050565b61079a611649565b6107eb82600460008673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020610e7e90919063ffffffff16565b905092915050565b60008111610836576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161082d90611e23565b60405180910390fd5b600061084133610434565b905080821115610886576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161087d90611fd6565b60405180910390fd5b6000600360003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020549050600083836108d89190611cfd565b9050600081036108fc576108f6336000610f2590919063ffffffff16565b50610914565b61091233826000610d5c9092919063ffffffff16565b505b61097b82604051806040016040528087815260200142815250600460003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020610f559092919063ffffffff16565b50600360003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060008154809291906109cc90611d8f565b91905055507fb3a097b9b09df137b8d0b2cd75a0006fdbeb32e0cc39366c7fa0929d1ce9fc2133838642604051610a069493929190611ff6565b60405180910390a150505050565b6000610a206000610fa6565b905090565b6000610a6e600460008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020610fbb565b9050919050565b6060806000610a8386610a25565b9050808510610ac7576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401610abe90611c7a565b60405180910390fd5b808486610ad49190611cc9565b1115610ae9578481610ae69190611cfd565b93505b8367ffffffffffffffff811115610b0357610b02611d31565b5b604051908082528060200260200182016040528015610b315781602001602082028036833780820191505090505b5092508367ffffffffffffffff811115610b4e57610b4d611d31565b5b604051908082528060200260200182016040528015610b8757816020015b610b74611649565b815260200190600190039081610b6c5790505b50915060005b84811015610c4157610bf18187610ba49190611cc9565b600460008a73ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020610fd090919063ffffffff16565b858381518110610c0457610c03611d60565b5b60200260200101858481518110610c1e57610c1d611d60565b5b602002602001018290528281525050508080610c3990611d8f565b915050610b8d565b5050935093915050565b600080600080610c5e866000018661103e565b915091508160001c8160001c9350935050509250929050565b6000610c9f836000018373ffffffffffffffffffffffffffffffffffffffff1660001b61107e565b905092915050565b6000610ccf836000018373ffffffffffffffffffffffffffffffffffffffff1660001b61109e565b60001c905092915050565b610d56848573ffffffffffffffffffffffffffffffffffffffff166323b872dd868686604051602401610d0f9392919061203b565b604051602081830303815290604052915060e01b6020820180517bffffffffffffffffffffffffffffffffffffffffffffffffffffffff838183161783525050505061111e565b50505050565b6000610d88846000018473ffffffffffffffffffffffffffffffffffffffff1660001b8460001b6111b5565b90509392505050565b6000610dac8260001b846000016111f090919063ffffffff16565b905092915050565b610e2e838473ffffffffffffffffffffffffffffffffffffffff1663a9059cbb8585604051602401610de7929190611e52565b604051602081830303815290604052915060e01b6020820180517bffffffffffffffffffffffffffffffffffffffffffffffffffffffff838183161783525050505061111e565b505050565b600082600201600083815260200190815260200160002060008082016000905560018201600090555050610e768260001b8460000161120790919063ffffffff16565b905092915050565b610e86611649565b600083600201600084815260200190815260200160002060405180604001604052908160008201548152602001600182015481525050905060008160200151148015610ed95750610ed78484610d91565b155b15610f1b57826040517f3a054bd4000000000000000000000000000000000000000000000000000000008152600401610f129190611969565b60405180910390fd5b8091505092915050565b6000610f4d836000018373ffffffffffffffffffffffffffffffffffffffff1660001b61121e565b905092915050565b6000818460020160008581526020019081526020016000206000820151816000015560208201518160010155905050610f9d8360001b8560000161125790919063ffffffff16565b90509392505050565b6000610fb48260000161126e565b9050919050565b6000610fc982600001611283565b9050919050565b6000610fda611649565b6000610ff2848660000161129890919063ffffffff16565b90508060001c8560020160008360001c81526020019081526020016000208060405180604001604052908160008201548152602001600182015481525050905092509250509250929050565b6000806000611059848660000161129890919063ffffffff16565b9050808560020160008381526020019081526020016000205492509250509250929050565b600061109682846000016111f090919063ffffffff16565b905092915050565b6000808360020160008481526020019081526020016000205490506000801b811480156110d257506110d0848461107e565b155b1561111457826040517f02b5668600000000000000000000000000000000000000000000000000000000815260040161110b919061208b565b60405180910390fd5b8091505092915050565b6000611149828473ffffffffffffffffffffffffffffffffffffffff166112af90919063ffffffff16565b9050600081511415801561116e57508080602001905181019061116c91906120de565b155b156111b057826040517f5274afe70000000000000000000000000000000000000000000000000000000081526004016111a7919061210b565b60405180910390fd5b505050565b600081846002016000858152602001908152602001600020819055506111e7838560000161125790919063ffffffff16565b90509392505050565b60006111ff83600001836112c5565b905092915050565b600061121683600001836112e8565b905092915050565b60008260020160008381526020019081526020016000206000905561124f828460000161120790919063ffffffff16565b905092915050565b600061126683600001836113fc565b905092915050565b600061127c82600001611283565b9050919050565b60006112918260000161146c565b9050919050565b60006112a7836000018361147d565b905092915050565b60606112bd838360006114a8565b905092915050565b600080836001016000848152602001908152602001600020541415905092915050565b600080836001016000848152602001908152602001600020549050600081146113f057600060018261131a9190611cfd565b90506000600186600001805490506113329190611cfd565b90508082146113a157600086600001828154811061135357611352611d60565b5b906000526020600020015490508087600001848154811061137757611376611d60565b5b90600052602060002001819055508387600101600083815260200190815260200160002081905550505b856000018054806113b5576113b4612126565b5b6001900381819060005260206000200160009055905585600101600086815260200190815260200160002060009055600193505050506113f6565b60009150505b92915050565b600061140883836112c5565b611461578260000182908060018154018082558091505060019003906000526020600020016000909190919091505582600001805490508360010160008481526020019081526020016000208190555060019050611466565b600090505b92915050565b600081600001805490509050919050565b600082600001828154811061149557611494611d60565b5b9060005260206000200154905092915050565b6060814710156114ef57306040517fcd7860590000000000000000000000000000000000000000000000000000000081526004016114e6919061210b565b60405180910390fd5b6000808573ffffffffffffffffffffffffffffffffffffffff16848660405161151891906121c6565b60006040518083038185875af1925050503d8060008114611555576040519150601f19603f3d011682016040523d82523d6000602084013e61155a565b606091505b509150915061156a868383611575565b925050509392505050565b60608261158a5761158582611604565b6115fc565b600082511480156115b2575060008473ffffffffffffffffffffffffffffffffffffffff163b145b156115f457836040517f9996b3150000000000000000000000000000000000000000000000000000000081526004016115eb919061210b565b60405180910390fd5b8190506115fd565b5b9392505050565b6000815111156116175780518082602001fd5b6040517f1425ea4200000000000000000000000000000000000000000000000000000000815260040160405180910390fd5b604051806040016040528060008152602001600081525090565b600067ffffffffffffffff82169050919050565b61168081611663565b82525050565b600060208201905061169b6000830184611677565b92915050565b600080fd5b6000819050919050565b6116b9816116a6565b81146116c457600080fd5b50565b6000813590506116d6816116b0565b92915050565b600080604083850312156116f3576116f26116a1565b5b6000611701858286016116c7565b9250506020611712858286016116c7565b9150509250929050565b600081519050919050565b600082825260208201905092915050565b6000819050602082019050919050565b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b600061177382611748565b9050919050565b61178381611768565b82525050565b6000611795838361177a565b60208301905092915050565b6000602082019050919050565b60006117b98261171c565b6117c38185611727565b93506117ce83611738565b8060005b838110156117ff5781516117e68882611789565b97506117f1836117a1565b9250506001810190506117d2565b5085935050505092915050565b600081519050919050565b600082825260208201905092915050565b6000819050602082019050919050565b611841816116a6565b82525050565b60006118538383611838565b60208301905092915050565b6000602082019050919050565b60006118778261180c565b6118818185611817565b935061188c83611828565b8060005b838110156118bd5781516118a48882611847565b97506118af8361185f565b925050600181019050611890565b5085935050505092915050565b600060408201905081810360008301526118e481856117ae565b905081810360208301526118f8818461186c565b90509392505050565b61190a81611768565b811461191557600080fd5b50565b60008135905061192781611901565b92915050565b600060208284031215611943576119426116a1565b5b600061195184828501611918565b91505092915050565b611963816116a6565b82525050565b600060208201905061197e600083018461195a565b92915050565b6000819050919050565b60006119a96119a461199f84611748565b611984565b611748565b9050919050565b60006119bb8261198e565b9050919050565b60006119cd826119b0565b9050919050565b6119dd816119c2565b82525050565b60006020820190506119f860008301846119d4565b92915050565b600060208284031215611a1457611a136116a1565b5b6000611a22848285016116c7565b91505092915050565b60008060408385031215611a4257611a416116a1565b5b6000611a5085828601611918565b9250506020611a61858286016116c7565b9150509250929050565b604082016000820151611a816000850182611838565b506020820151611a946020850182611838565b50505050565b6000604082019050611aaf6000830184611a6b565b92915050565b600080600060608486031215611ace57611acd6116a1565b5b6000611adc86828701611918565b9350506020611aed868287016116c7565b9250506040611afe868287016116c7565b9150509250925092565b600081519050919050565b600082825260208201905092915050565b6000819050602082019050919050565b604082016000820151611b4a6000850182611838565b506020820151611b5d6020850182611838565b50505050565b6000611b6f8383611b34565b60408301905092915050565b6000602082019050919050565b6000611b9382611b08565b611b9d8185611b13565b9350611ba883611b24565b8060005b83811015611bd9578151611bc08882611b63565b9750611bcb83611b7b565b925050600181019050611bac565b5085935050505092915050565b60006040820190508181036000830152611c00818561186c565b90508181036020830152611c148184611b88565b90509392505050565b600082825260208201905092915050565b7f696e76616c696420737461727400000000000000000000000000000000000000600082015250565b6000611c64600d83611c1d565b9150611c6f82611c2e565b602082019050919050565b60006020820190508181036000830152611c9381611c57565b9050919050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fd5b6000611cd4826116a6565b9150611cdf836116a6565b9250828201905080821115611cf757611cf6611c9a565b5b92915050565b6000611d08826116a6565b9150611d13836116a6565b9250828203905081811115611d2b57611d2a611c9a565b5b92915050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052604160045260246000fd5b7f4e487b7100000000000000000000000000000000000000000000000000000000600052603260045260246000fd5b6000611d9a826116a6565b91507fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff8203611dcc57611dcb611c9a565b5b600182019050919050565b7f616d6f756e74206d7573742062652067726561746572207468616e2030000000600082015250565b6000611e0d601d83611c1d565b9150611e1882611dd7565b602082019050919050565b60006020820190508181036000830152611e3c81611e00565b9050919050565b611e4c81611768565b82525050565b6000604082019050611e676000830185611e43565b611e74602083018461195a565b9392505050565b7f6e6f6e6578697374656e74206170706c79000000000000000000000000000000600082015250565b6000611eb1601183611c1d565b9150611ebc82611e7b565b602082019050919050565b60006020820190508181036000830152611ee081611ea4565b9050919050565b7f756e7374616b65206c6f636b74696d65206e6f74206578706972656400000000600082015250565b6000611f1d601c83611c1d565b9150611f2882611ee7565b602082019050919050565b60006020820190508181036000830152611f4c81611f10565b9050919050565b6000606082019050611f686000830186611e43565b611f75602083018561195a565b611f82604083018461195a565b949350505050565b7f616d6f756e74206d757374206265206c657373207468616e207374616b657300600082015250565b6000611fc0601f83611c1d565b9150611fcb82611f8a565b602082019050919050565b60006020820190508181036000830152611fef81611fb3565b9050919050565b600060808201905061200b6000830187611e43565b612018602083018661195a565b612025604083018561195a565b612032606083018461195a565b95945050505050565b60006060820190506120506000830186611e43565b61205d6020830185611e43565b61206a604083018461195a565b949350505050565b6000819050919050565b61208581612072565b82525050565b60006020820190506120a0600083018461207c565b92915050565b60008115159050919050565b6120bb816120a6565b81146120c657600080fd5b50565b6000815190506120d8816120b2565b92915050565b6000602082840312156120f4576120f36116a1565b5b6000612102848285016120c9565b91505092915050565b60006020820190506121206000830184611e43565b92915050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052603160045260246000fd5b600081519050919050565b600081905092915050565b60005b8381101561218957808201518184015260208101905061216e565b60008484015250505050565b60006121a082612155565b6121aa8185612160565b93506121ba81856020860161216b565b80840191505092915050565b60006121d28284612195565b91508190509291505056fea2646970667358221220531a6ff448701178bd75bcfa1b78183d4e2478e136cbb3efed50b758b698116c64736f6c63430008140033",
+  "devdoc": {
+    "errors": {
+      "AddressEmptyCode(address)": [
+        {
+          "details": "There's no code at `target` (it is not a contract)."
+        }
+      ],
+      "AddressInsufficientBalance(address)": [
+        {
+          "details": "The ETH balance of the account is not enough to perform the operation."
+        }
+      ],
+      "EnumerableMapNonexistentKey(bytes32)": [
+        {
+          "details": "Query for a nonexistent map key."
+        }
+      ],
+      "FailedInnerCall()": [
+        {
+          "details": "A call to an address target failed. The target may have reverted."
+        }
+      ],
+      "SafeERC20FailedOperation(address)": [
+        {
+          "details": "An operation with an ERC20 token failed."
+        }
+      ]
+    },
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 2709,
+        "contract": "contracts/core/OPAIStake.sol:OPAIStake",
+        "label": "stakes",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_struct(AddressToUintMap)1618_storage"
+      },
+      {
+        "astId": 2713,
+        "contract": "contracts/core/OPAIStake.sol:OPAIStake",
+        "label": "applyIds",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 2718,
+        "contract": "contracts/core/OPAIStake.sol:OPAIStake",
+        "label": "applies",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_mapping(t_address,t_struct(UintToApply)3761_storage)"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_array(t_bytes32)dyn_storage": {
+        "base": "t_bytes32",
+        "encoding": "dynamic_array",
+        "label": "bytes32[]",
+        "numberOfBytes": "32"
+      },
+      "t_bytes32": {
+        "encoding": "inplace",
+        "label": "bytes32",
+        "numberOfBytes": "32"
+      },
+      "t_mapping(t_address,t_struct(UintToApply)3761_storage)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => struct EnumerableApply.UintToApply)",
+        "numberOfBytes": "32",
+        "value": "t_struct(UintToApply)3761_storage"
+      },
+      "t_mapping(t_address,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_mapping(t_bytes32,t_bytes32)": {
+        "encoding": "mapping",
+        "key": "t_bytes32",
+        "label": "mapping(bytes32 => bytes32)",
+        "numberOfBytes": "32",
+        "value": "t_bytes32"
+      },
+      "t_mapping(t_bytes32,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_bytes32",
+        "label": "mapping(bytes32 => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_mapping(t_uint256,t_struct(ApplyInfo)3752_storage)": {
+        "encoding": "mapping",
+        "key": "t_uint256",
+        "label": "mapping(uint256 => struct EnumerableApply.ApplyInfo)",
+        "numberOfBytes": "32",
+        "value": "t_struct(ApplyInfo)3752_storage"
+      },
+      "t_struct(AddressToUintMap)1618_storage": {
+        "encoding": "inplace",
+        "label": "struct EnumerableMap.AddressToUintMap",
+        "members": [
+          {
+            "astId": 1617,
+            "contract": "contracts/core/OPAIStake.sol:OPAIStake",
+            "label": "_inner",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_struct(Bytes32ToBytes32Map)960_storage"
+          }
+        ],
+        "numberOfBytes": "96"
+      },
+      "t_struct(ApplyInfo)3752_storage": {
+        "encoding": "inplace",
+        "label": "struct EnumerableApply.ApplyInfo",
+        "members": [
+          {
+            "astId": 3749,
+            "contract": "contracts/core/OPAIStake.sol:OPAIStake",
+            "label": "amount",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 3751,
+            "contract": "contracts/core/OPAIStake.sol:OPAIStake",
+            "label": "applyTime",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_uint256"
+          }
+        ],
+        "numberOfBytes": "64"
+      },
+      "t_struct(Bytes32Set)2258_storage": {
+        "encoding": "inplace",
+        "label": "struct EnumerableSet.Bytes32Set",
+        "members": [
+          {
+            "astId": 2257,
+            "contract": "contracts/core/OPAIStake.sol:OPAIStake",
+            "label": "_inner",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_struct(Set)2064_storage"
+          }
+        ],
+        "numberOfBytes": "64"
+      },
+      "t_struct(Bytes32ToBytes32Map)960_storage": {
+        "encoding": "inplace",
+        "label": "struct EnumerableMap.Bytes32ToBytes32Map",
+        "members": [
+          {
+            "astId": 955,
+            "contract": "contracts/core/OPAIStake.sol:OPAIStake",
+            "label": "_keys",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_struct(Bytes32Set)2258_storage"
+          },
+          {
+            "astId": 959,
+            "contract": "contracts/core/OPAIStake.sol:OPAIStake",
+            "label": "_values",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_mapping(t_bytes32,t_bytes32)"
+          }
+        ],
+        "numberOfBytes": "96"
+      },
+      "t_struct(Set)2064_storage": {
+        "encoding": "inplace",
+        "label": "struct EnumerableSet.Set",
+        "members": [
+          {
+            "astId": 2059,
+            "contract": "contracts/core/OPAIStake.sol:OPAIStake",
+            "label": "_values",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_array(t_bytes32)dyn_storage"
+          },
+          {
+            "astId": 2063,
+            "contract": "contracts/core/OPAIStake.sol:OPAIStake",
+            "label": "_positions",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_mapping(t_bytes32,t_uint256)"
+          }
+        ],
+        "numberOfBytes": "64"
+      },
+      "t_struct(UintToApply)3761_storage": {
+        "encoding": "inplace",
+        "label": "struct EnumerableApply.UintToApply",
+        "members": [
+          {
+            "astId": 3755,
+            "contract": "contracts/core/OPAIStake.sol:OPAIStake",
+            "label": "_keys",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_struct(Bytes32Set)2258_storage"
+          },
+          {
+            "astId": 3760,
+            "contract": "contracts/core/OPAIStake.sol:OPAIStake",
+            "label": "_values",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_mapping(t_uint256,t_struct(ApplyInfo)3752_storage)"
+          }
+        ],
+        "numberOfBytes": "96"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}
