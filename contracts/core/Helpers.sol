@@ -14,6 +14,12 @@ contract Helpers {
 	OPAIStake public opaiStake;
 	IERC20 public opai;
 
+	struct VigorStoneInfo {
+		uint256 totalSupply;
+		uint256 maxSupply;
+		uint256 price;
+	}
+
 	struct State {
 		uint256 vigorStoneBalance;
 		uint256 vigorStoneStake;
@@ -21,6 +27,7 @@ contract Helpers {
 		uint256 opaiBalance;
 		uint256 opaiStake;
 		uint256 opaiApplyLength;
+		VigorStoneInfo vigorStoneInfo;
 	}
 
 	constructor(VigorStoneStake _vigorStoneStake, VigorStone _vigorStone, OPAIStake _opaiStake, IERC20 _opai) {
@@ -37,6 +44,9 @@ contract Helpers {
 		state.opaiStake = opaiStake.getStake(account);
 		state.opaiApplyLength = opaiStake.applyLength(account);
 		state.opaiBalance = opai.balanceOf(account);
+		state.vigorStoneInfo.maxSupply = vigorStone.maxSupply();
+		state.vigorStoneInfo.price = vigorStone.price();
+		state.vigorStoneInfo.totalSupply = vigorStone.totalSupply(TOKENID);
 	}
 
 	function vigoreStoneApplyList(address account, uint256 start, uint256 amount) public view returns(uint256[] memory ids, EnumerableApply.ApplyInfo[] memory infos) {
