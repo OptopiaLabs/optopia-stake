@@ -80,14 +80,15 @@ contract VigorStoneStake is ERC1155Holder {
 	function stakesOf(uint256 start, uint256 amount) public view returns (address[] memory stakers, uint256[] memory amounts) {
 		uint256 size = stakeLength();
 		if (size != 0) {
-			require(start < size, "invalid start");
-			if (start + amount > size) {
-				amount = size - start;
-			}
-			stakers = new address[](amount);
-			amounts = new uint256[](amount);
-			for (uint256 i = 0; i < amount; i++) {
-				(stakers[i], amounts[i]) = stakes.at(start + i);
+			if (start < size) {
+				if (start + amount > size) {
+					amount = size - start;
+				}
+				stakers = new address[](amount);
+				amounts = new uint256[](amount);
+				for (uint256 i = 0; i < amount; i++) {
+					(stakers[i], amounts[i]) = stakes.at(start + i);
+				}
 			}
 		}
 	}
@@ -102,14 +103,17 @@ contract VigorStoneStake is ERC1155Holder {
 
 	function applyOf(address account, uint256 start, uint256 amount) public view returns (uint256[] memory ids, EnumerableApply.ApplyInfo[] memory infos) {
 		uint256 size = applyLength(account);
-		require(start < size, "invalid start");
-		if (start + amount > size) {
-			amount = size - start;
-		}
-		ids = new uint256[](amount);
-		infos = new EnumerableApply.ApplyInfo[](amount);
-		for (uint256 i = 0; i < amount; i++) {
-			(ids[i], infos[i]) = applies[account].at(start + i);
+		if (size != 0) {
+			if (start < size) {
+				if (start + amount > size) {
+					amount = size - start;
+				}
+				ids = new uint256[](amount);
+				infos = new EnumerableApply.ApplyInfo[](amount);
+				for (uint256 i = 0; i < amount; i++) {
+					(ids[i], infos[i]) = applies[account].at(start + i);
+				}
+			}
 		}
 	}
 }
