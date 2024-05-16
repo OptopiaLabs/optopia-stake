@@ -1,6 +1,6 @@
 {
 	"name": "@optopia/stake",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"description": "optopia stake contracts for typescript",
 	"main": "./types/index.js",
 	"types": "./types/index.ts",

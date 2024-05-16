@@ -88,6 +88,6 @@ contract VigorStone is ERC1155SupplyUpgradeable, ERC1155BurnableUpgradeable, Own
 	}
 
 	function _update(address from, address to, uint256[] memory ids, uint256[] memory values) internal override(ERC1155SupplyUpgradeable, ERC1155Upgradeable) {
-		super._update(from, to, ids, values);
+		ERC1155SupplyUpgradeable._update(from, to, ids, values);
 	}
 }
