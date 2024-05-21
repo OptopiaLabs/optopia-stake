@@ -73,16 +73,14 @@ contract Stake {
 
 	function stakesOf(uint256 start, uint256 amount) public view returns (address[] memory stakers, uint256[] memory amounts) {
 		uint256 size = stakeLength();
-		if (size != 0) {
-			if (start < size) {
-				if (start + amount > size) {
-					amount = size - start;
-				}
-				stakers = new address[](amount);
-				amounts = new uint256[](amount);
-				for (uint256 i = 0; i < amount; i++) {
-					(stakers[i], amounts[i]) = stakes.at(start + i);
-				}
+		if (size != 0 && start < size) {
+			if (start + amount > size) {
+				amount = size - start;
+			}
+			stakers = new address[](amount);
+			amounts = new uint256[](amount);
+			for (uint256 i = 0; i < amount; i++) {
+				(stakers[i], amounts[i]) = stakes.at(start + i);
 			}
 		}
 	}
