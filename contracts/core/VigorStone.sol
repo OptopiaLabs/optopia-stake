@@ -80,7 +80,7 @@ contract VigorStone is ERC1155SupplyUpgradeable, ERC1155BurnableUpgradeable, Own
 
 	function setTokenURI(string memory _uri) external onlyOwner {
 		tokenURI = _uri;
-		emit URI(tokenURI, TOKENID);
+		emit URI(_uri, TOKENID);
 	}
 
 	function uri(uint256 tokenId) public view override returns (string memory) {
