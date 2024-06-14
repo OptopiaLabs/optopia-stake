@@ -1,13 +1,13 @@
 {
 	"name": "@optopia/stake",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"description": "optopia stake contracts for typescript",
 	"main": "./types/index.js",
 	"types": "./types/index.ts",
 	"engines": {
-		"node": ">= v20.9.0"
+		"node": ">= 18.16.0"
 	},
-	"author": "Alexandas",
+	"author": "cryptooptopia",
 	"license": "MIT",
 	"keywords": [
 		"ethereum",

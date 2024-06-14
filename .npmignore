@@ -9,5 +9,4 @@ deployments/
 .env
 !types/**/test
 !types/**/contracts
-!contracts/test
 scripts/
