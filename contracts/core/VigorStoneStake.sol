@@ -12,7 +12,7 @@ contract VigorStoneStake is ERC1155Holder {
 	using EnumerableApply for EnumerableApply.UintToApply;
 
 	uint256 public constant TOKENID = 0;
-	uint64 public immutable LOCKTIME = 5 minutes;
+	uint64 public immutable LOCKTIME = 7 days;
 	IERC1155 public immutable TOKEN;
 	uint256 public immutable MAXSTAKE = 5;
 
