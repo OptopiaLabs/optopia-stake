@@ -6,7 +6,9 @@ cache/
 deploy/
 tasks/
 deployments/
+node_modules/
 .env
 !types/**/test
 !types/**/contracts
+!contracts/test
 scripts/

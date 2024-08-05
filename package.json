@@ -1,13 +1,13 @@
 {
 	"name": "@optopia/stake",
-	"version": "0.0.5",
+	"version": "0.0.2",
 	"description": "optopia stake contracts for typescript",
 	"main": "./types/index.js",
 	"types": "./types/index.ts",
 	"engines": {
-		"node": ">= 18.16.0"
+		"node": ">= v20.9.0"
 	},
-	"author": "cryptooptopia",
+	"author": "Alexandas",
 	"license": "MIT",
 	"keywords": [
 		"ethereum",
@@ -42,8 +42,8 @@
 		"@nomicfoundation/hardhat-network-helpers": "^1.0.0",
 		"@nomicfoundation/hardhat-toolbox": "^5.0.0",
 		"@nomicfoundation/hardhat-verify": "^1.0.1",
-		"@openzeppelin/contracts": "^5.0.2",
-		"@openzeppelin/contracts-upgradeable": "^5.0.2",
+		"@openzeppelin/contracts": "^4.9.3",
+		"@openzeppelin/contracts-upgradeable": "^4.9.3",
 		"@typechain/ethers-v6": "^0.4.0",
 		"@typechain/hardhat": "^8.0.0",
 		"@types/chai": "^4.2.18",
